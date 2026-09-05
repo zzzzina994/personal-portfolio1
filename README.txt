@@ -1,0 +1,1 @@
+GitHub Pages: upload index.html, style.css, archive.html, and the images folder. Replace [YOUR EMAIL] and the photo placeholders when ready.
