@@ -4,30 +4,838 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Prajina Shakya | Portfolio</title>
+  <title>Prajina Shakya — Portfolio</title>
+  <meta name="description" content="Prajina Shakya — technology, research, leadership, community work, and creative practice.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root{
+      --bg:#eee6d6;
+      --card:#f8f5ee;
+      --ink:#27241f;
+      --muted:#716b61;
+      --line:#d8cfbf;
+      --accent:#8a7657;
+      --accent-dark:#62533d;
+      --white:#fffdf8;
+      --shadow:0 12px 35px rgba(54,45,31,.08);
+      --radius:22px;
+      --max:1180px;
+    }
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(var(--max), calc(100% - 40px));
+      margin:auto;
+    }
+
+    /* NAVIGATION */
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(238,230,214,.93);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(216,207,191,.75);
+    }
+
+    .nav-inner{
+      width:min(var(--max), calc(100% - 40px));
+      margin:auto;
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+
+    .logo{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:20px;
+      font-weight:bold;
+      letter-spacing:-.02em;
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav-links a{
+      font-size:13px;
+      color:var(--muted);
+      transition:.25s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--ink);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:88vh;
+      display:flex;
+      align-items:center;
+      padding:100px 0 90px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:70px;
+      align-items:end;
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:11px;
+      color:var(--accent-dark);
+      font-weight:bold;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:500;
+      letter-spacing:-.035em;
+      line-height:1.1;
+    }
+
+    h1{
+      font-size:clamp(55px, 8vw, 105px);
+      max-width:950px;
+      margin-bottom:30px;
+    }
+
+    .hero h1 em{
+      font-style:italic;
+      color:var(--accent-dark);
+    }
+
+    .hero-description{
+      max-width:730px;
+      font-size:19px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .location{
+      margin-top:35px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .hero-side{
+      border-left:1px solid var(--line);
+      padding-left:30px;
+      padding-bottom:10px;
+    }
+
+    .hero-side p{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      line-height:1.45;
+    }
+
+    .hero-side small{
+      display:block;
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section{
+      padding:110px 0;
+      border-top:1px solid var(--line);
+    }
+
+    .section-number{
+      font-size:11px;
+      letter-spacing:.15em;
+      color:var(--accent-dark);
+      font-weight:bold;
+      margin-bottom:20px;
+    }
+
+    .section-title{
+      font-size:clamp(40px, 5vw, 68px);
+      margin-bottom:45px;
+      max-width:900px;
+    }
+
+    .section-intro{
+      max-width:760px;
+      color:var(--muted);
+      font-size:17px;
+      margin-bottom:55px;
+    }
+
+    /* ABOUT */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+    }
+
+    .about-text p{
+      margin-bottom:24px;
+      font-size:17px;
+    }
+
+    .about-text p:last-child{
+      margin-bottom:0;
+    }
+
+    .about-quote{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:45px;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+    }
+
+    .about-quote p{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:29px;
+      line-height:1.4;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:35px;
+    }
+
+    .tag{
+      border:1px solid var(--line);
+      border-radius:100px;
+      padding:8px 14px;
+      font-size:12px;
+      color:var(--muted);
+      background:rgba(248,245,238,.35);
+    }
+
+    .photo-placeholder{
+      margin-top:45px;
+      min-height:360px;
+      border:1px dashed #bdb3a2;
+      border-radius:var(--radius);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:var(--muted);
+      background:rgba(248,245,238,.3);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    /* ACADEMICS */
+
+    .academic-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(216,207,191,.7);
+      border-radius:var(--radius);
+      padding:36px;
+      box-shadow:var(--shadow);
+    }
+
+    .card-label{
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      color:var(--accent-dark);
+      font-size:10px;
+      font-weight:bold;
+      margin-bottom:17px;
+    }
+
+    .card h3{
+      font-size:30px;
+      margin-bottom:13px;
+    }
+
+    .card p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .school-location{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:22px;
+    }
+
+    .skills{
+      display:grid;
+      gap:28px;
+    }
+
+    .skill-item strong{
+      display:block;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:20px;
+      margin-bottom:6px;
+      font-weight:500;
+    }
+
+    .skill-item span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .cert-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      margin-top:25px;
+    }
+
+    .cert{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:24px;
+    }
+
+    .cert h4{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:21px;
+      font-weight:500;
+      line-height:1.25;
+      margin-bottom:10px;
+    }
+
+    .cert p{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .featured{
+      margin-top:25px;
+      background:var(--accent-dark);
+      color:var(--white);
+      border-radius:var(--radius);
+      padding:45px;
+    }
+
+    .featured .card-label{
+      color:#e8decc;
+    }
+
+    .featured h3{
+      font-size:38px;
+      margin-bottom:10px;
+    }
+
+    .featured p{
+      color:#e6dfd3;
+      font-size:14px;
+    }
+
+    /* PROJECTS */
+
+    .project{
+      display:grid;
+      grid-template-columns:100px 1fr;
+      gap:35px;
+      padding:45px 0;
+      border-top:1px solid var(--line);
+    }
+
+    .project:last-child{
+      border-bottom:1px solid var(--line);
+    }
+
+    .project-number{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:25px;
+      color:var(--accent);
+    }
+
+    .project-category{
+      font-size:10px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--accent-dark);
+      font-weight:bold;
+      margin-bottom:15px;
+    }
+
+    .project h3{
+      font-size:39px;
+      margin-bottom:22px;
+    }
+
+    .project-description{
+      max-width:780px;
+      color:var(--muted);
+      font-size:16px;
+      margin-bottom:25px;
+    }
+
+    .project-description p{
+      margin-bottom:18px;
+    }
+
+    .project-details{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .detail{
+      font-size:11px;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:100px;
+      color:var(--muted);
+    }
+
+    .project-link{
+      display:inline-block;
+      margin-top:28px;
+      font-size:12px;
+      font-weight:bold;
+      border-bottom:1px solid var(--ink);
+      padding-bottom:3px;
+    }
+
+    .project-status{
+      background:rgba(138,118,87,.08);
+      border-left:3px solid var(--accent);
+      padding:18px 20px;
+      margin:25px 0;
+      max-width:780px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* LEADERSHIP */
+
+    .mun-intro{
+      max-width:700px;
+      font-size:19px;
+      color:var(--muted);
+      margin-bottom:55px;
+    }
+
+    .timeline{
+      position:relative;
+    }
+
+    .timeline-item{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:40px;
+      padding:45px 0;
+      border-top:1px solid var(--line);
+    }
+
+    .timeline-item:last-child{
+      border-bottom:1px solid var(--line);
+    }
+
+    .year{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:25px;
+      color:var(--accent-dark);
+    }
+
+    .role{
+      font-size:10px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--accent-dark);
+      font-weight:bold;
+      margin-bottom:13px;
+    }
+
+    .timeline-item h3{
+      font-size:34px;
+      margin-bottom:17px;
+    }
+
+    .timeline-item p{
+      max-width:780px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .timeline-skills{
+      margin-top:18px;
+      font-size:11px;
+      color:var(--accent-dark);
+    }
+
+    .leadership-photos{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      margin-top:35px;
+    }
+
+    /* COMMUNITY */
+
+    .community-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .community-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:35px;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:390px;
+    }
+
+    .community-number{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:22px;
+      color:var(--accent);
+      margin-bottom:35px;
+    }
+
+    .community-card .role{
+      margin-bottom:13px;
+    }
+
+    .community-card h3{
+      font-size:28px;
+      margin-bottom:20px;
+    }
+
+    .community-card p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .community-stat{
+      margin-top:auto;
+      padding-top:30px;
+      font-size:11px;
+      color:var(--accent-dark);
+      letter-spacing:.04em;
+    }
+
+    /* CREATIVE */
+
+    .creative-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .creative-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:35px;
+      box-shadow:var(--shadow);
+    }
+
+    .creative-card.large{
+      min-height:430px;
+    }
+
+    .creative-card h3{
+      font-size:30px;
+      margin-bottom:15px;
+    }
+
+    .creative-card p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .creative-label{
+      font-size:10px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--accent-dark);
+      font-weight:bold;
+      margin-bottom:15px;
+    }
+
+    .creative-photo{
+      min-height:220px;
+      border:1px dashed #bdb3a2;
+      border-radius:18px;
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:var(--muted);
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    /* CONNECTING SECTION */
+
+    .connecting{
+      text-align:center;
+      padding:140px 0;
+    }
+
+    .connecting h2{
+      max-width:850px;
+      margin:0 auto 30px;
+      font-size:clamp(42px, 6vw, 75px);
+    }
+
+    .connecting p{
+      max-width:720px;
+      margin:auto;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .connecting .tags{
+      justify-content:center;
+    }
+
+    /* CONTACT */
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:70px;
+      align-items:end;
+    }
+
+    .contact h2{
+      font-size:clamp(48px, 7vw, 90px);
+      margin-bottom:30px;
+    }
+
+    .contact-description{
+      max-width:700px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .contact-description p{
+      margin-bottom:18px;
+    }
+
+    .contact-links{
+      display:flex;
+      flex-direction:column;
+      gap:17px;
+      border-left:1px solid var(--line);
+      padding-left:30px;
+    }
+
+    .contact-links a{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:20px;
+      transition:.25s ease;
+    }
+
+    .contact-links a:hover{
+      color:var(--accent-dark);
+    }
+
+    .contact-location{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:15px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+    }
+
+    .footer-inner{
+      width:min(var(--max), calc(100% - 40px));
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      color:var(--muted);
+      font-size:11px;
+    }
+
+    /* ANIMATION */
+
+    .fade-up{
+      animation:fadeUp .8s ease both;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(18px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .nav-inner{
+        min-height:auto;
+        padding:18px 0;
+        align-items:flex-start;
+      }
+
+      .nav-links{
+        gap:12px 16px;
+      }
+
+      .hero{
+        min-height:auto;
+        padding:90px 0;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .academic-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-side{
+        border-left:none;
+        border-top:1px solid var(--line);
+        padding-left:0;
+        padding-top:30px;
+      }
+
+      .community-grid{
+        grid-template-columns:1fr;
+      }
+
+      .creative-grid{
+        grid-template-columns:1fr;
+      }
+
+      .project{
+        grid-template-columns:60px 1fr;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .container,
+      .nav-inner,
+      .footer-inner{
+        width:min(var(--max), calc(100% - 28px));
+      }
+
+      .nav-inner{
+        flex-direction:column;
+      }
+
+      .nav-links{
+        justify-content:flex-start;
+      }
+
+      h1{
+        font-size:53px;
+      }
+
+      section{
+        padding:80px 0;
+      }
+
+      .card,
+      .about-quote,
+      .community-card,
+      .creative-card,
+      .featured{
+        padding:27px;
+      }
+
+      .project{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .timeline-item{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .cert-grid,
+      .leadership-photos{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
+  <!-- NAVIGATION -->
 
-  <header class="site-header">
-    <div class="nav-container">
+  <nav>
+    <div class="nav-inner">
 
-      <a href="#top" class="logo">
-        Prajina Shakya
-      </a>
+      <a href="#top" class="logo">Prajina Shakya</a>
 
-      <nav class="nav-links">
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#academics">Academics</a>
         <a href="#projects">Projects</a>
@@ -35,939 +843,798 @@
         <a href="#community">Community</a>
         <a href="#creative">Creative</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
 
     </div>
-  </header>
+  </nav>
 
 
   <main id="top">
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- HERO -->
 
     <section class="hero">
+      <div class="container">
 
-      <div class="hero-ribbon" aria-hidden="true">
+        <div class="hero-grid">
 
-        <svg viewBox="0 0 1200 500" preserveAspectRatio="none">
+          <div class="fade-up">
 
-          <path
-            class="ribbon-path ribbon-path-back"
-            d="M-80 360
-               C120 300, 180 390, 330 300
-               C480 210, 470 100, 620 150
-               C770 200, 740 350, 900 300
-               C1030 260, 1060 130, 1280 170"
-          />
+            <div class="eyebrow">Prajina Shakya · Kathmandu, Nepal</div>
 
-          <path
-            class="ribbon-path ribbon-path-main"
-            d="M-80 350
-               C120 290, 180 380, 330 290
-               C480 200, 470 90, 620 140
-               C770 190, 740 340, 900 290
-               C1030 250, 1060 120, 1280 160"
-          />
+            <h1>
+              Turning ideas into things people can <em>use.</em>
+            </h1>
 
-        </svg>
+            <p class="hero-description">
+              I turn ideas into things people can use — a working site, a committee resolution, a dataset that makes a problem visible. Technology gives me the tools; MUN, community work, and art teach me who they're actually for.
+            </p>
 
-      </div>
+            <div class="location">
+              Kathmandu, Nepal
+            </div>
+
+          </div>
 
 
-      <div class="hero-content">
+          <div class="hero-side fade-up">
 
-        <p class="eyebrow">
-          PRAJINA SHAKYA
-        </p>
+            <p>
+              I use research and technology to make ideas usable — and creative and community work to make them human.
+            </p>
 
-        <h1>
-          Exploring ideas.<br>
-          Building things.<br>
-          <em>Finding my path.</em>
-        </h1>
+            <small>
+              Research · Technology · Creativity · Community
+            </small>
 
-        <p class="hero-location">
-          Kathmandu, Nepal
-        </p>
-
-        <p class="hero-description">
-          Curious learner interested in technology, business,
-          creativity, and community impact. I like turning ideas
-          into things I can point to — a project, a role, or a result.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section class="section" id="about">
-
-      <div class="section-number">
-        01 — ABOUT
-      </div>
-
-      <div class="about-grid">
-
-        <div class="about-text">
-
-          <h2>
-            Curious about what happens
-            when different ideas meet.
-          </h2>
-
-          <p>
-            I like working across disciplines: websites,
-            presentations, art, music, and community projects.
-          </p>
-
-          <p>
-            My experiences in Model United Nations, environmental
-            activities, creative work, and technology have helped
-            me develop research, communication, leadership, and
-            problem-solving skills.
-          </p>
-
-          <p>
-            I'm especially curious about how technology and creative
-            thinking can be used to make ideas more useful and accessible.
-          </p>
-
-          <div class="interest-list">
-            <span>Technology</span>
-            <span>Business</span>
-            <span>Data & AI</span>
-            <span>Cybersecurity</span>
-            <span>Sustainability</span>
           </div>
 
         </div>
 
-
-        <div class="photo-placeholder portrait-placeholder">
-          <span>YOUR PHOTO</span>
-          <small>Replace with one personal photo</small>
-        </div>
-
       </div>
-
     </section>
 
 
-    <!-- =========================
-         ACADEMICS
-    ========================== -->
+    <!-- ABOUT -->
 
-    <section class="section section-soft" id="academics">
+    <section id="about">
+      <div class="container">
 
-      <div class="section-number">
-        02 — ACADEMICS & SKILLS
+        <div class="section-number">01 — ABOUT</div>
+
+        <h2 class="section-title">
+          Curious about what happens when different ideas meet.
+        </h2>
+
+        <div class="about-grid">
+
+          <div class="about-text">
+
+            <p>
+              I like working across disciplines: websites, presentations, art, music, and community projects.
+            </p>
+
+            <p>
+              My experiences in Model United Nations, environmental activities, creative work, and technology have helped me develop research, communication, leadership, and problem-solving skills.
+            </p>
+
+            <p>
+              I'm especially curious about how technology and creative thinking can be used to make ideas more useful and accessible.
+            </p>
+
+            <p>
+              That's why a data project and a mandala drawing live on the same page. Both start the same way — with a question I can't stop turning over — and both end with something I can hand to someone else.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Technology</span>
+              <span class="tag">Business</span>
+              <span class="tag">Data & AI</span>
+              <span class="tag">Cybersecurity</span>
+              <span class="tag">Sustainability</span>
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="about-quote">
+              <p>
+                Different interests don't have to be separate paths. Sometimes they are different ways of asking the same question.
+              </p>
+            </div>
+
+            <div class="photo-placeholder">
+              YOUR PHOTO<br>
+              Replace with one personal photo
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
+    </section>
 
-      <div class="academic-grid">
 
-        <div>
+    <!-- ACADEMICS -->
 
-          <h2>
-            Academic foundation
-          </h2>
+    <section id="academics">
+      <div class="container">
 
-          <div class="school-block">
+        <div class="section-number">02 — ACADEMICS & SKILLS</div>
 
-            <h3>
-              St. Mary's Higher Secondary School
-            </h3>
+        <h2 class="section-title">
+          Academic foundation
+        </h2>
 
-            <p>
+
+        <div class="academic-grid">
+
+          <div class="card">
+
+            <div class="card-label">Education</div>
+
+            <h3>St. Mary's Higher Secondary School</h3>
+
+            <div class="school-location">
               Jawalakhel, Lalitpur, Nepal
-            </p>
+            </div>
 
             <p>
-              Grade 12 · Class of 2026
-            </p>
+              <strong>Grade 12 · Class of 2026</strong><br><br>
 
-            <p>
-              Computer Management — Management Stream
-            </p>
-
-            <p>
+              Computer Management — Management Stream<br>
               Computer Science / IT focus
             </p>
 
-            <p class="muted">
-              Coursework included computer applications,
-              programming, databases, problem-solving, and management.
+            <p style="margin-top:20px;">
+              Coursework included computer applications, programming, databases, problem-solving, and management.
             </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-label">Skills</div>
+
+            <div class="skills">
+
+              <div class="skill-item">
+                <strong>Technical</strong>
+                <span>HTML · CSS · Python · SQL · Web Development</span>
+              </div>
+
+              <div class="skill-item">
+                <strong>Academic</strong>
+                <span>Research · Logical Problem-Solving · Data Analysis</span>
+              </div>
+
+              <div class="skill-item">
+                <strong>Leadership</strong>
+                <span>Public Speaking · Presentation · Facilitation · Team Coordination · Collaboration</span>
+              </div>
+
+            </div>
 
           </div>
 
         </div>
 
 
-        <div>
+        <!-- CERTIFICATIONS -->
 
-          <h3 class="small-heading">
-            Skills
-          </h3>
+        <div class="card" style="margin-top:25px;">
 
-          <div class="skill-group">
+          <div class="card-label">Certifications</div>
 
-            <strong>Technical</strong>
+          <div class="cert-grid">
 
-            <p>
-              HTML · CSS · Python · SQL · Web Development
-            </p>
+            <div class="cert">
 
-          </div>
-
-
-          <div class="skill-group">
-
-            <strong>Academic</strong>
-
-            <p>
-              Research · Logical Problem-Solving · Data Analysis
-            </p>
-
-          </div>
-
-
-          <div class="skill-group">
-
-            <strong>Leadership</strong>
-
-            <p>
-              Public Speaking · Presentation · Facilitation ·
-              Team Coordination · Collaboration
-            </p>
-
-          </div>
-
-
-          <h3 class="small-heading certification-heading">
-            Certifications
-          </h3>
-
-          <div class="credential-list">
-
-            <div class="credential">
-
-              <strong>
+              <h4>
                 Introduction to Cybersecurity Awareness
-              </strong>
+              </h4>
 
-              <span>
+              <p>
                 HP LIFE & HP Foundation · 2026
-              </span>
+              </p>
 
             </div>
 
 
-            <div class="credential">
+            <div class="cert">
 
-              <strong>
+              <h4>
                 Professional Networking for Career Growth
-              </strong>
+              </h4>
 
-              <span>
+              <p>
                 HP LIFE & HP Foundation · 2026
-              </span>
+              </p>
 
             </div>
-
-          </div>
-
-
-          <h3 class="small-heading learning-heading">
-            Current Learning
-          </h3>
-
-          <div class="current-learning">
-
-            <strong>
-              AI Learning Program
-            </strong>
-
-            <span>
-              American Spaces Nepal · 2026
-            </span>
-
-            <p>
-              Currently participating in an AI-focused learning program.
-            </p>
 
           </div>
 
         </div>
 
-      </div>
 
+        <!-- CURRENT LEARNING -->
 
-      <!-- FEATURED CREDENTIAL -->
+        <div class="card" style="margin-top:25px;">
 
-      <div class="featured-credential">
+          <div class="card-label">Current Learning</div>
 
-        <div class="featured-copy">
+          <h3>AI Learning Program</h3>
 
-          <p class="eyebrow">
-            FEATURED CREDENTIAL
+          <p style="margin-top:12px;">
+            <strong>American Spaces Nepal · 2026</strong>
           </p>
 
-          <h2>
-            Certificate
-          </h2>
+          <p style="margin-top:12px;">
+            Currently participating in an AI-focused learning program, exploring how artificial intelligence can be understood and applied through practical learning.
+          </p>
 
-          <p>
+        </div>
+
+
+        <!-- FEATURED CREDENTIAL -->
+
+        <div class="featured">
+
+          <div class="card-label">Featured Credential</div>
+
+          <h3>Certificate</h3>
+
+          <p style="font-family:Georgia,serif;font-size:23px;margin:15px 0;">
             Introduction to Cybersecurity Awareness
           </p>
 
-          <span class="muted">
+          <p>
             HP LIFE & HP Foundation · 2026
-          </span>
+          </p>
 
-        </div>
-
-
-        <div class="certificate-placeholder">
-
-          <span>
-            CERTIFICATE
-          </span>
-
-          <small>
+          <div class="photo-placeholder" style="margin-top:30px;border-color:rgba(255,255,255,.3);color:#e6dfd3;background:rgba(255,255,255,.05);">
+            CERTIFICATE<br>
             Replace with certificate image
-          </small>
+          </div>
 
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
-         PROJECTS
-    ========================== -->
+    <!-- PROJECTS -->
 
-    <section class="section" id="projects">
+    <section id="projects">
+      <div class="container">
 
-      <div class="section-number">
-        03 — PROJECTS
-      </div>
+        <div class="section-number">03 — PROJECTS</div>
 
-      <div class="section-intro">
-
-        <h2>
+        <h2 class="section-title">
           Things I've built
         </h2>
 
-        <p>
-          Projects are where I turn ideas into something tangible.
+        <p class="section-intro">
+          Projects are where I turn questions and ideas into something tangible.
         </p>
 
+
+        <!-- PROJECT 1 -->
+
+        <div class="project">
+
+          <div class="project-number">01</div>
+
+          <div>
+
+            <div class="project-category">
+              HTML · CSS · WEB DESIGN
+            </div>
+
+            <h3>Personal Portfolio Website</h3>
+
+            <div class="project-description">
+
+              <p>
+                Built and coded this site from scratch in HTML and CSS to organize four years of scattered work — MUN files, certificates, creative work, project notes, and other experiences — into one place a stranger could actually navigate.
+              </p>
+
+              <p>
+                The hardest part wasn't the design; it was deciding what to cut.
+              </p>
+
+              <p>
+                I wanted the site to do more than display a list of accomplishments. It needed to show how different parts of my work connect: research leading to action, technology making information usable, and creative work making it human.
+              </p>
+
+            </div>
+
+            <div class="project-details">
+              <span class="detail">Structure</span>
+              <span class="detail">Visual Design</span>
+              <span class="detail">Responsive Design</span>
+              <span class="detail">Usability</span>
+            </div>
+
+            <a href="#" class="project-link">
+              GitHub →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROJECT 2 -->
+
+        <div class="project">
+
+          <div class="project-number">02</div>
+
+          <div>
+
+            <div class="project-category">
+              DATA · SUSTAINABILITY · TECHNOLOGY
+            </div>
+
+            <h3>Environmental Data Project</h3>
+
+            <div class="project-description">
+
+              <p>
+                I started this project after noticing how much environmental information about Kathmandu — including air quality, river health, waste, and related issues — exists, but is often scattered across reports, PDFs, and datasets that aren't easy for an ordinary person to explore.
+              </p>
+
+              <p>
+                I'm working on turning that information into something simpler: a format where patterns are visible, questions are easier to ask, and environmental information can become something people can actually use.
+              </p>
+
+            </div>
+
+            <div class="project-status">
+              <strong>Current status:</strong><br>
+              Currently in development as I explore how environmental data can be organized and presented in a clear, understandable format.
+            </div>
+
+            <div class="project-status">
+              <strong>The question:</strong><br>
+              How can environmental data become something people can actually use rather than something they simply read about?
+            </div>
+
+            <div class="project-status">
+              <strong>What I'd do next:</strong><br>
+              Develop clearer visualizations and an easier way for people to explore the information themselves.
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-
-
-      <div class="project-grid">
-
-        <article class="project-card">
-
-          <div class="project-number">
-            01
-          </div>
-
-          <p class="card-category">
-            HTML · CSS · WEB DESIGN
-          </p>
-
-          <h3>
-            Personal Portfolio Website
-          </h3>
-
-          <p>
-            Built this website to organize my academic work,
-            projects, leadership experiences, and creative work
-            in one place.
-          </p>
-
-          <div class="project-focus">
-            Structure · Visual Design · Responsive Design · Usability
-          </div>
-
-        </article>
-
-
-        <article class="project-card">
-
-          <div class="project-number">
-            02
-          </div>
-
-          <p class="card-category">
-            DATA · SUSTAINABILITY · TECHNOLOGY
-          </p>
-
-          <h3>
-            Environmental Data Project
-          </h3>
-
-          <p>
-            A project exploring how environmental data can be
-            presented in a simple, understandable format.
-          </p>
-
-          <div class="project-focus">
-            Currently in development.
-          </div>
-
-        </article>
-
-      </div>
-
     </section>
 
 
-    <!-- =========================
-         LEADERSHIP
-    ========================== -->
+    <!-- LEADERSHIP -->
 
-    <section class="section section-soft" id="leadership">
+    <section id="leadership">
+      <div class="container">
 
-      <div class="section-number">
-        04 — LEADERSHIP
-      </div>
+        <div class="section-number">04 — LEADERSHIP</div>
 
-      <div class="section-intro">
-
-        <h2>
+        <h2 class="section-title">
           Model United Nations
         </h2>
 
-        <p>
-          Four years of research, public speaking,
-          negotiation, journalism, and committee work.
+        <p class="mun-intro">
+          Four years of research, public speaking, negotiation, journalism, and committee work.
         </p>
 
-      </div>
+        <p class="section-intro">
+          MUN taught me that good ideas rarely arrive fully formed. They get questioned, negotiated, rewritten, and sometimes completely changed before they become something a group can agree on.
+        </p>
 
 
-      <div class="timeline">
+        <div class="timeline">
 
-        <div class="timeline-item">
+          <!-- 2022 -->
 
-          <div class="timeline-year">
-            2022
+          <div class="timeline-item">
+
+            <div class="year">2022</div>
+
+            <div>
+
+              <div class="role">
+                Vice Chair · UNFCCC Committee
+              </div>
+
+              <h3>Facilitating discussion</h3>
+
+              <p>
+                As Vice Chair, I helped facilitate committee discussions among 20+ delegates exploring climate policy, sustainable development, and youth climate action.
+              </p>
+
+              <p style="margin-top:16px;">
+                The experience taught me that leadership isn't always about having the strongest argument in the room. Sometimes it's about recognizing where different arguments overlap and helping people build from there.
+              </p>
+
+              <div class="timeline-skills">
+                Facilitation · Negotiation · Public Speaking · Research
+              </div>
+
+            </div>
+
           </div>
 
-          <div class="timeline-content">
 
-            <p class="card-category">
-              VICE CHAIR · UNFCCC COMMITTEE
-            </p>
+          <!-- 2023 -->
 
-            <h3>
-              Facilitating discussion
-            </h3>
+          <div class="timeline-item">
 
-            <p>
-              Chaired committee sessions exploring climate policy,
-              sustainable development, and youth climate action.
-              Facilitated discussions among 20+ delegates and
-              contributed to the development of resolutions and
-              draft resolutions.
-            </p>
+            <div class="year">2023</div>
+
+            <div>
+
+              <div class="role">
+                Delegate · Commission on the Status of Women
+              </div>
+
+              <h3>Research & representation</h3>
+
+              <p>
+                Representing an assigned country meant researching its position on gender policy issues and then defending that perspective during committee discussions and negotiations.
+              </p>
+
+              <p style="margin-top:16px;">
+                It pushed me to separate what I personally believed from what I could actually argue with evidence.
+              </p>
+
+              <p style="margin-top:16px;">
+                MUN taught me something I still use outside the committee room: understanding a position doesn't require agreeing with it.
+              </p>
+
+              <div class="timeline-skills">
+                Research · Diplomacy · Negotiation · Communication
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- 2019 -->
+
+          <div class="timeline-item">
+
+            <div class="year">2019</div>
+
+            <div>
+
+              <div class="role">
+                Logistics Team
+              </div>
+
+              <h3>Conference coordination</h3>
+
+              <p>
+                Supported conference organization through group assignments, communication, and event coordination.
+              </p>
+
+              <p style="margin-top:16px;">
+                It was an early introduction to the work that happens behind the scenes to make a large event function — coordinating people, solving practical problems, and making sure different pieces come together.
+              </p>
+
+              <div class="timeline-skills">
+                Coordination · Communication · Teamwork
+              </div>
+
+            </div>
 
           </div>
 
         </div>
 
 
-        <div class="timeline-item">
+        <div class="leadership-photos">
 
-          <div class="timeline-year">
-            2023
-          </div>
-
-          <div class="timeline-content">
-
-            <p class="card-category">
-              DELEGATE · COMMISSION ON THE STATUS OF WOMEN
-            </p>
-
-            <h3>
-              Research & representation
-            </h3>
-
-            <p>
-              Researched an assigned country's position on gender
-              policy issues and represented that perspective during
-              committee discussions and negotiations.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-          <div class="timeline-year">
-            2019
-          </div>
-
-          <div class="timeline-content">
-
-            <p class="card-category">
-              LOGISTICS TEAM
-            </p>
-
-            <h3>
-              Conference coordination
-            </h3>
-
-            <p>
-              Supported conference organization through group
-              assignments, communication, and event coordination.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="image-row">
-
-        <div class="photo-placeholder">
-
-          <span>
-            MUN PHOTO 01
-          </span>
-
-          <small>
+          <div class="photo-placeholder">
+            MUN PHOTO 01<br>
             Replace with leadership photo
-          </small>
+          </div>
 
-        </div>
-
-
-        <div class="photo-placeholder">
-
-          <span>
-            MUN PHOTO 02
-          </span>
-
-          <small>
+          <div class="photo-placeholder">
+            MUN PHOTO 02<br>
             Replace with leadership photo
-          </small>
+          </div>
 
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
-         COMMUNITY
-    ========================== -->
+    <!-- COMMUNITY -->
 
-    <section class="section" id="community">
+    <section id="community">
+      <div class="container">
 
-      <div class="section-number">
-        05 — COMMUNITY
-      </div>
+        <div class="section-number">05 — COMMUNITY</div>
 
-      <div class="section-intro">
-
-        <h2>
+        <h2 class="section-title">
           Showing up beyond the classroom
         </h2>
 
-        <p>
-          Experiences that connected me with environmental,
-          social, and community-focused work.
+        <p class="section-intro">
+          Experiences that connected me with environmental, social, and community-focused work.
         </p>
 
-      </div>
+
+        <div class="community-grid">
+
+          <!-- BAGMATI -->
+
+          <div class="community-card">
+
+            <div class="community-number">01</div>
+
+            <div class="role">
+              Malpi Outreach Program
+            </div>
+
+            <h3>Bagmati River Clean-Up</h3>
+
+            <p>
+              Spent a Saturday morning working alongside 70+ volunteers to clean the Bagmati river area and remove waste from the riverbanks.
+            </p>
+
+            <p style="margin-top:15px;">
+              What stayed with me wasn't just the amount of waste we collected. It was how much more complicated the problem felt after seeing it up close.
+            </p>
+
+            <div class="community-stat">
+              70+ volunteers · Environmental responsibility · Community action
+            </div>
+
+          </div>
 
 
-      <div class="community-grid">
+          <!-- CYCLING -->
 
-        <article class="community-card">
+          <div class="community-card">
 
-          <span class="community-number">
-            01
-          </span>
+            <div class="community-number">02</div>
 
-          <h3>
-            Bagmati River Clean-Up
-          </h3>
+            <div class="role">
+              Volunteer Cyclist
+            </div>
 
-          <p class="card-category">
-            MALPI OUTREACH PROGRAM
-          </p>
+            <h3>Cancer Awareness Cycling Rally</h3>
 
-          <p>
-            Participated in a river-area clean-up initiative
-            with 70+ members, focused on environmental
-            responsibility and community involvement.
-          </p>
+            <p>
+              Participated as a volunteer cyclist in a cancer-awareness campaign attended by 200+ participants.
+            </p>
 
-        </article>
+            <p style="margin-top:15px;">
+              Sometimes contributing doesn't mean leading from the front. Sometimes it means showing up, taking part, and helping something larger than yourself move forward.
+            </p>
 
+            <div class="community-stat">
+              200+ participants · Community awareness · Volunteering
+            </div>
 
-        <article class="community-card">
-
-          <span class="community-number">
-            02
-          </span>
-
-          <h3>
-            Cancer Awareness Cycling Rally
-          </h3>
-
-          <p class="card-category">
-            VOLUNTEER CYCLIST
-          </p>
-
-          <p>
-            Participated as a volunteer cyclist in a
-            cancer-awareness campaign attended by
-            200+ participants.
-          </p>
-
-        </article>
+          </div>
 
 
-        <article class="community-card">
+          <!-- PRESCHOOL -->
 
-          <span class="community-number">
-            03
-          </span>
+          <div class="community-card">
 
-          <h3>
-            Preschool Volunteering
-          </h3>
+            <div class="community-number">03</div>
 
-          <p class="card-category">
-            HAPPY HOME MONTESSORI
-          </p>
+            <div class="role">
+              Happy Home Montessori
+            </div>
 
-          <p>
-            Supported young children through learning and
-            creative activities including letters, music,
-            coloring, and everyday routines.
-          </p>
+            <h3>Preschool Volunteering</h3>
 
-        </article>
+            <p>
+              Supported young children through learning and creative activities including letters, music, coloring, and everyday routines.
+            </p>
 
-      </div>
+            <p style="margin-top:15px;">
+              The experience taught me patience, adaptability, and how differently people can respond to the same explanation or activity.
+            </p>
+
+            <div class="community-stat">
+              Learning support · Creativity · Communication
+            </div>
+
+          </div>
+
+        </div>
 
 
-      <div class="image-row community-images">
+        <div class="leadership-photos">
 
-        <div class="photo-placeholder">
-
-          <span>
-            BAGMATI PHOTO
-          </span>
-
-          <small>
+          <div class="photo-placeholder">
+            BAGMATI PHOTO<br>
             Replace with clean-up photo
-          </small>
+          </div>
 
-        </div>
-
-
-        <div class="photo-placeholder">
-
-          <span>
-            CYCLING PHOTO
-          </span>
-
-          <small>
+          <div class="photo-placeholder">
+            CYCLING PHOTO<br>
             Replace with rally photo
-          </small>
+          </div>
 
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
-         CREATIVE WORK
-    ========================== -->
+    <!-- CREATIVE -->
 
-    <section class="section section-soft" id="creative">
+    <section id="creative">
+      <div class="container">
 
-      <div class="section-number">
-        06 — CREATIVE WORK
-      </div>
+        <div class="section-number">06 — CREATIVE WORK</div>
 
-      <div class="section-intro">
-
-        <h2>
+        <h2 class="section-title">
           Creativity in different forms
         </h2>
 
-        <p>
-          Art, music, movement, and visual design are part
-          of how I explore ideas outside academics.
+        <p class="section-intro">
+          Art, music, movement, and visual design are part of how I explore ideas outside academics.
         </p>
 
-      </div>
 
+        <div class="creative-grid">
 
-      <!-- VISUAL ART -->
+          <!-- ART -->
 
-      <div class="creative-block">
+          <div class="creative-card large">
 
-        <div class="creative-heading">
+            <div class="creative-label">
+              Visual Art
+            </div>
 
-          <p class="card-category">
-            VISUAL ART
-          </p>
+            <h3>
+              Acrylic painting · Mandala art · Architectural models
+            </h3>
 
-          <h3>
-            Acrylic painting · Mandala art · Architectural models
-          </h3>
+            <p>
+              From acrylic painting and mandala art to architectural models, visual work has become one of the ways I slow down, experiment, and think differently.
+            </p>
 
-        </div>
-
-
-        <div class="creative-images three-images">
-
-          <div class="photo-placeholder">
-
-            <span>
-              ACRYLIC PAINTING
-            </span>
-
-            <small>
+            <div class="creative-photo">
+              ACRYLIC PAINTING<br>
               Replace with artwork
-            </small>
+            </div>
 
           </div>
 
 
-          <div class="photo-placeholder">
+          <!-- NAIL ART -->
 
-            <span>
-              MANDALA ART
-            </span>
+          <div class="creative-card large">
 
-            <small>
-              Replace with artwork
-            </small>
+            <div class="creative-label">
+              Nail Art & Design
+            </div>
 
-          </div>
+            <h3>
+              Certified Nail Technician
+            </h3>
 
+            <p>
+              Completed professional nail technician training and developed hands-on experience creating nail art designs.
+            </p>
 
-          <div class="photo-placeholder">
+            <p style="margin-top:15px;">
+              It's an interest that combines creativity, precision, patience, and visual design — another example of how making something by hand can be its own form of problem-solving.
+            </p>
 
-            <span>
-              ARCHITECTURAL MODEL
-            </span>
-
-            <small>
-              Optional — use only if you have a strong photo
-            </small>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- NAIL ART -->
-
-      <div class="creative-block nail-art-block">
-
-        <div class="creative-heading">
-
-          <p class="card-category">
-            NAIL ART & DESIGN
-          </p>
-
-          <h3>
-            Certified Nail Technician
-          </h3>
-
-          <p>
-            Certified Nail Technician with hands-on experience
-            creating nail art designs. An interest that combines
-            creativity, precision, and visual design.
-          </p>
-
-        </div>
-
-
-        <div class="nail-content">
-
-          <div class="photo-placeholder nail-photo">
-
-            <span>
-              NAIL ART
-            </span>
-
-            <small>
+            <div class="creative-photo">
+              NAIL ART<br>
               Optional — replace with one strong design photo
-            </small>
+            </div>
+
+          </div>
+
+
+          <!-- MUSIC -->
+
+          <div class="creative-card">
+
+            <div class="creative-label">
+              Music
+            </div>
+
+            <h3>
+              Vocals · Guitar · Harmonica
+            </h3>
+
+            <p>
+              Singing and learning guitar and harmonica have taught me a different kind of discipline — one built through repetition, listening, experimentation, and being willing to sound imperfect while learning.
+            </p>
+
+            <div class="creative-photo">
+              GUITAR / HARMONICA<br>
+              Replace with photo
+            </div>
+
+          </div>
+
+
+          <!-- DANCE -->
+
+          <div class="creative-card">
+
+            <div class="creative-label">
+              Dance & Writing
+            </div>
+
+            <h3>
+              Dance · Creative Writing
+            </h3>
+
+            <p>
+              Creative practices that give me another way to communicate ideas and express myself.
+            </p>
+
+            <p style="margin-top:15px;">
+              They remind me that not every idea needs to be explained technically. Sometimes movement, rhythm, or a few carefully chosen words can communicate something more directly.
+            </p>
+
+            <div class="creative-photo">
+              DANCE<br>
+              Optional — replace with one strong photo
+            </div>
 
           </div>
 
         </div>
 
       </div>
-
-
-      <!-- MUSIC -->
-
-      <div class="creative-block">
-
-        <div class="creative-heading">
-
-          <p class="card-category">
-            MUSIC
-          </p>
-
-          <h3>
-            Vocals · Guitar · Harmonica
-          </h3>
-
-        </div>
-
-
-        <div class="creative-images">
-
-          <div class="photo-placeholder">
-
-            <span>
-              GUITAR
-            </span>
-
-            <small>
-              Replace with guitar photo
-            </small>
-
-          </div>
-
-
-          <div class="photo-placeholder">
-
-            <span>
-              HARMONICA
-            </span>
-
-            <small>
-              Replace with harmonica photo
-            </small>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- DANCE & WRITING -->
-
-      <div class="creative-block final-creative-block">
-
-        <div class="creative-heading">
-
-          <p class="card-category">
-            DANCE & WRITING
-          </p>
-
-          <h3>
-            Dance · Creative Writing
-          </h3>
-
-          <p>
-            Creative practices that give me another way to
-            communicate ideas and express myself.
-          </p>
-
-        </div>
-
-
-        <div class="photo-placeholder dance-photo">
-
-          <span>
-            DANCE
-          </span>
-
-          <small>
-            Optional — replace with one strong photo
-          </small>
-
-        </div>
-
-      </div>
-
     </section>
 
 
-    <!-- =========================
-         WHAT CONNECTS IT ALL
-    ========================== -->
+    <!-- WHAT CONNECTS IT ALL -->
 
-    <section class="closing-section">
+    <section class="connecting">
 
-      <div class="closing-ribbon" aria-hidden="true">
+      <div class="container">
 
-        <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
-
-          <path
-            d="M-50 210
-               C150 150, 250 250, 410 175
-               C570 100, 650 110, 780 170
-               C930 240, 1050 110, 1250 145"
-          />
-
-        </svg>
-
-      </div>
-
-
-      <div class="closing-content">
-
-        <p class="eyebrow">
+        <div class="section-number">
           WHAT CONNECTS IT ALL
-        </p>
+        </div>
 
         <h2>
-          Curiosity, creativity,
-          and the willingness
-          to keep learning.
+          Curiosity, creativity, and the willingness to keep learning.
         </h2>
 
         <p>
-          From technology and environmental projects to
-          leadership, community work, and creative practice,
-          I enjoy exploring different ways of turning ideas
-          into something meaningful.
+          From technology and environmental projects to leadership, community work, and creative practice, I enjoy exploring different ways of turning ideas into something meaningful.
         </p>
 
-        <div class="closing-tags">
+        <p style="margin-top:20px;">
+          A website, a dataset, a committee resolution, a painting, or a community project may look completely different on the surface. But they begin with the same thing: curiosity.
+        </p>
 
-          <span>Technology</span>
-          <span>Leadership</span>
-          <span>Creativity</span>
-          <span>Community</span>
+        <p style="margin-top:20px;">
+          I use research and technology to make ideas usable — and creative and community work to make them human.
+        </p>
 
+        <div class="tags">
+          <span class="tag">Technology</span>
+          <span class="tag">Leadership</span>
+          <span class="tag">Creativity</span>
+          <span class="tag">Community</span>
         </div>
 
       </div>
@@ -975,39 +1642,66 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT / FINAL NOTE
-    ========================== -->
+    <!-- CONTACT -->
 
-    <section class="contact-section" id="contact">
+    <section id="contact" class="contact">
 
-      <div class="contact-inner">
+      <div class="container">
 
-        <p class="eyebrow">
-          07 — CONTACT
-        </p>
+        <div class="section-number">07 — CONTACT</div>
 
-        <h2>
-          This is only the beginning.
-        </h2>
+        <div class="contact-grid">
 
-        <p>
-          I've explored different interests through technology,
-          leadership, community work, and creative practice.
-          Each experience has taught me something different,
-          and I'm excited to see where I can take those lessons next.
-        </p>
+          <div>
 
-        <a
-          href="mailto:[YOUR EMAIL]"
-          class="email-link"
-        >
-          [YOUR EMAIL]
-        </a>
+            <h2>
+              This is only the beginning.
+            </h2>
 
-        <p class="contact-location">
-          Kathmandu, Nepal
-        </p>
+            <div class="contact-description">
+
+              <p>
+                Every section on this page started as a question I wanted to answer — through code, through a committee room, through a paintbrush.
+              </p>
+
+              <p>
+                I'm looking for the next room to ask questions in.
+              </p>
+
+              <p>
+                If that's a project, an internship, a collaboration, or just a conversation — reach out.
+              </p>
+
+              <p style="font-family:Georgia,serif;font-size:22px;color:var(--ink);margin-top:30px;">
+                I want to keep building things that make ideas clearer, problems more visible, and information more human.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-links">
+
+            <a href="mailto:[YOUR EMAIL]">
+              [YOUR EMAIL]
+            </a>
+
+            <a href="#">
+              GitHub →
+            </a>
+
+            <a href="#">
+              LinkedIn →
+            </a>
+
+            <div class="contact-location">
+              Kathmandu, Nepal
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -1016,22 +1710,50 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
 
-  <footer class="site-footer">
+  <footer>
 
-    <p>
-      © 2026 Prajina Shakya
-    </p>
+    <div class="footer-inner">
 
-    <p>
-      Exploring ideas. Building things. Finding my path.
-    </p>
+      <span>
+        © 2026 Prajina Shakya
+      </span>
+
+      <span>
+        Turning ideas into things people can use.
+      </span>
+
+    </div>
 
   </footer>
 
+
+  <script>
+
+    // Smooth reveal when sections enter the screen
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-up");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold:0.08
+      }
+    );
+
+    document.querySelectorAll(
+      ".card, .project, .timeline-item, .community-card, .creative-card, .about-quote"
+    ).forEach((element) => {
+      observer.observe(element);
+    });
+
+  </script>
 
 </body>
 </html>
