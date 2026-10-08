@@ -136,15 +136,6 @@ p {
   padding: 110px 0 130px;
 }
 
-.eyebrow {
-  margin-bottom: 24px;
-  color: var(--accent-dark);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-}
-
 .hero h1 {
   max-width: 900px;
   margin-bottom: 26px;
@@ -167,89 +158,79 @@ p {
 }
 
 
-/* HERO HIGHLIGHTS */
-
-.hero-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 32px;
-}
-
-.hero-highlights span {
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.55);
-  color: var(--accent-dark);
-  font-size: 0.8rem;
-}
-
-
-/* ONE RIBBON ONLY */
+/* =========================
+   HERO RIBBON
+   THICK + THIN
+========================= */
 
 .hero-ribbon {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .hero-ribbon svg {
   width: 100%;
   height: 100%;
+  display: block;
   overflow: visible;
 }
 
-/* Hide the second/background ribbon */
-.ribbon-path-back {
-  display: none;
-}
-
-.ribbon-path {
+.ribbon-thick {
   fill: none;
-  stroke: var(--accent);
-  stroke-width: 3;
-  opacity: 0.55;
+  stroke: #f0e5eb;
+  stroke-width: 42;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.ribbon-path-main {
-  stroke-dasharray: 1800;
-  stroke-dashoffset: 1800;
-  animation:
-    ribbonDraw 8s ease-in-out infinite,
-    ribbonFloat 8s ease-in-out infinite;
+.ribbon-thin {
+  fill: none;
+  stroke: #b77b9e;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  /* Always visible */
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+
+  /* Gentle movement only */
+  animation: heroRibbonFloat 8s ease-in-out infinite;
 }
 
-@keyframes ribbonDraw {
-  0% {
-    stroke-dashoffset: 1800;
-  }
-
-  45% {
-    stroke-dashoffset: 0;
-  }
-
-  70% {
-    stroke-dashoffset: 0;
-  }
-
-  100% {
-    stroke-dashoffset: -1800;
-  }
-}
-
-@keyframes ribbonFloat {
+@keyframes heroRibbonFloat {
   0%,
   100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
+}
+
+
+/* =========================
+   HERO HIGHLIGHTS
+========================= */
+
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 35px;
+}
+
+.hero-highlights span {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--accent-dark);
+  font-size: 0.82rem;
 }
 
 
@@ -330,35 +311,11 @@ p {
   font-size: 0.83rem;
 }
 
-.photo-placeholder,
-.certificate-placeholder {
-  min-height: 280px;
+.portrait {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.6);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.photo-placeholder span,
-.certificate-placeholder span {
-  color: var(--accent-dark);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-}
-
-.photo-placeholder small,
-.certificate-placeholder small {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.portrait-placeholder {
-  min-height: 500px;
 }
 
 
@@ -476,9 +433,10 @@ p {
   font-size: 1.05rem;
 }
 
-.certificate-placeholder {
-  min-height: 430px;
+.certificate-image {
+  width: 100%;
   background: var(--card);
+  border: 1px solid var(--line);
 }
 
 
@@ -579,6 +537,10 @@ p {
   gap: 25px;
 }
 
+.image-row img {
+  width: 100%;
+}
+
 
 /* =========================
    COMMUNITY
@@ -627,12 +589,17 @@ p {
 }
 
 .creative-heading {
-  max-width: 720px;
+  width: 100%;
+  max-width: none;
   margin-bottom: 35px;
 }
 
 .creative-heading h3 {
   margin-bottom: 15px;
+}
+
+.creative-heading > p {
+  max-width: 900px;
 }
 
 .creative-heading > p:last-child {
@@ -645,21 +612,16 @@ p {
   gap: 22px;
 }
 
-.three-images {
-  grid-template-columns: repeat(3, 1fr);
+.creative-images img {
+  width: 100%;
 }
 
 .nail-content {
-  max-width: 500px;
-}
-
-.nail-photo {
-  min-height: 330px;
+  max-width: none;
 }
 
 .dance-photo {
   max-width: 520px;
-  min-height: 300px;
 }
 
 .final-creative-block {
@@ -668,30 +630,79 @@ p {
 
 
 /* =========================
-   CLOSING SECTION
+   CLOSING PAGE
+   THIN RIBBON ONLY
 ========================= */
 
 .closing-section {
   position: relative;
   overflow: hidden;
+  min-height: 800px;
   padding: 170px 32px;
   background: #f0e5eb;
 }
 
+
+/* Ribbon container */
+
+.closing-ribbon {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+}
+
+
+/* SVG */
+
+.closing-ribbon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+
+/* IMPORTANT:
+   There is NO thick ribbon on the final page.
+   Only this thin purple line is shown.
+*/
+
+.closing-ribbon-line {
+  fill: none;
+  stroke: #b77b9e;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+
+/* Final-page content stays above ribbon */
+
 .closing-content {
   position: relative;
   z-index: 2;
-  max-width: 760px;
+  max-width: 850px;
   margin: auto;
   text-align: center;
 }
 
+.closing-content .section-number {
+  margin-bottom: 55px;
+}
+
 .closing-content h2 {
   margin-bottom: 30px;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .closing-content > p:not(.eyebrow) {
-  max-width: 650px;
+  max-width: 850px;
   margin: 0 auto;
   color: var(--muted);
   font-size: 1.05rem;
@@ -713,29 +724,10 @@ p {
   font-size: 0.82rem;
 }
 
-.closing-ribbon {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.closing-ribbon svg {
-  width: 100%;
-  height: 100%;
-}
-
 
 /* =========================
    CONTACT
 ========================= */
-
-/*
-   IMPORTANT:
-   The contact section used to inherit
-   max-width: 1180px from .section.
-   This caused the white strips on both sides.
-*/
 
 .contact-section {
   max-width: none;
@@ -752,7 +744,7 @@ p {
   text-align: center;
 }
 
-.contact-inner .eyebrow {
+.contact-inner .section-number {
   color: #d8a9c2;
 }
 
@@ -761,7 +753,7 @@ p {
   font-size: clamp(3rem, 6vw, 5.5rem);
 }
 
-.contact-inner > p:not(.eyebrow):not(.contact-location) {
+.contact-inner > p:not(.contact-location) {
   max-width: 650px;
   margin: 0 auto;
   color: #c5bbc1;
@@ -786,9 +778,9 @@ p {
 }
 
 .contact-location {
-  margin-top: 28px;
-  color: #a99da5;
-  font-size: 0.9rem;
+  margin-top: 28px !important;
+  color: #a99da5 !important;
+  font-size: 0.9rem !important;
 }
 
 
@@ -819,7 +811,7 @@ p {
 
 
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -861,8 +853,17 @@ p {
   .hero-ribbon {
     opacity: 0.7;
   }
+
+  .closing-section {
+    min-height: 700px;
+  }
+
 }
 
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 620px) {
 
@@ -896,10 +897,6 @@ p {
     font-size: clamp(3rem, 15vw, 5rem);
   }
 
-  .portrait-placeholder {
-    min-height: 390px;
-  }
-
   .project-card {
     min-height: auto;
     padding: 30px;
@@ -921,7 +918,20 @@ p {
   }
 
   .closing-section {
+    min-height: 650px;
     padding: 110px 20px;
+  }
+
+  .closing-content h2 {
+    font-size: clamp(2.3rem, 10vw, 4rem);
+  }
+
+  .closing-content > p:not(.eyebrow) {
+    font-size: 0.98rem;
+  }
+
+  .closing-ribbon-line {
+    stroke-width: 2.5;
   }
 
   .contact-section {
@@ -943,8 +953,20 @@ p {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .ribbon-thick {
+    stroke-width: 30;
+  }
+
+  .ribbon-thin {
+    stroke-width: 2.5;
+  }
 }
 
+
+/* =========================
+   REDUCED MOTION
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -952,9 +974,8 @@ p {
     scroll-behavior: auto;
   }
 
-  .ribbon-path-main {
+  .ribbon-thin {
     animation: none;
-    stroke-dashoffset: 0;
   }
 
   .project-card {
