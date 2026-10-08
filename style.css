@@ -188,7 +188,7 @@ p {
 
 /* =========================
    HERO RIBBON
-   ONE CONTINUOUS LINE
+   CLEAN SINGLE LINE
 ========================= */
 
 .hero-ribbon {
@@ -204,40 +204,24 @@ p {
   overflow: visible;
 }
 
-/* Hide the second/background ribbon */
-.ribbon-path-back {
+/*
+   REMOVE THE SHADED / THICK RIBBON.
+   Your HTML contains this as a separate path.
+*/
+.ribbon-thick {
   display: none;
 }
 
-/* Main ribbon line */
-.ribbon-path {
+/*
+   Keep ONLY one clean continuous line.
+*/
+.ribbon-thin {
   fill: none;
   stroke: var(--accent);
   stroke-width: 3;
   opacity: 0.55;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-/*
-   Keep the ribbon as ONE solid continuous line.
-   No repeating dash pattern.
-*/
-.ribbon-path-main {
-  stroke-dasharray: none;
-  stroke-dashoffset: 0;
-  animation: ribbonFloat 8s ease-in-out infinite;
-}
-
-@keyframes ribbonFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
 }
 
 
@@ -657,7 +641,7 @@ p {
 
 /* =========================
    CLOSING SECTION
-   LIGHT PINK — NOT BLACK
+   LIGHT PINK
 ========================= */
 
 .closing-section {
@@ -935,12 +919,6 @@ p {
 
   html {
     scroll-behavior: auto;
-  }
-
-  .ribbon-path-main {
-    animation: none;
-    stroke-dashoffset: 0;
-    stroke-dasharray: none;
   }
 
   .project-card {
