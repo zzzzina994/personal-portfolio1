@@ -1,4 +1,4 @@
-\:root {
+:root {
   --bg: #faf7f8;
   --card: #ffffff;
   --text: #29242a;
@@ -189,7 +189,9 @@ p {
 }
 
 
-/* Thin moving line */
+/* =========================
+   FIRST PAGE — MOVING THIN RIBBON
+========================= */
 
 .ribbon-thin {
   fill: none;
@@ -199,31 +201,33 @@ p {
   stroke-linejoin: round;
 
   /*
-    The line itself stays continuous,
-    while a visible section travels
-    along the entire path.
+    Only a short section of the thin line
+    is visible at a time.
+    
+    The section travels along the exact
+    SVG path from LEFT → RIGHT.
   */
 
-  stroke-dasharray: 850 2500;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 180 5000;
+  stroke-dashoffset: 180;
 
-  animation: heroRibbonTravel 5s linear infinite;
+  animation: ribbonPathMove 6s linear infinite;
 }
 
 
 /*
-   Moves the thin section continuously
-   from left to right along the SVG path.
+   Move the visible thin section
+   continuously along the path.
 */
 
-@keyframes heroRibbonTravel {
+@keyframes ribbonPathMove {
 
-  from {
-    stroke-dashoffset: 0;
+  0% {
+    stroke-dashoffset: 180;
   }
 
-  to {
-    stroke-dashoffset: -3350;
+  100% {
+    stroke-dashoffset: -5000;
   }
 
 }
@@ -653,6 +657,7 @@ p {
     Tall enough to create the large
     final-page composition from your reference.
   */
+
   min-height: 800px;
 
   padding: 170px 32px;
