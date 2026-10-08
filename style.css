@@ -189,9 +189,7 @@ p {
 }
 
 
-/* =========================
-   FIRST PAGE — MOVING THIN RIBBON
-========================= */
+/* Thin moving line */
 
 .ribbon-thin {
   fill: none;
@@ -201,35 +199,26 @@ p {
   stroke-linejoin: round;
 
   /*
-    Only a short section of the thin line
-    is visible at a time.
-    
-    The section travels along the exact
-    SVG path from LEFT → RIGHT.
+    This makes the moving section
+    follow the exact SVG path.
   */
-
-  stroke-dasharray: 180 5000;
+  stroke-dasharray: 180 1000;
   stroke-dashoffset: 180;
 
-  animation: ribbonPathMove 6s linear infinite;
+  animation: heroRibbonTravel 6s linear infinite;
 }
 
 
-/*
-   Move the visible thin section
-   continuously along the path.
-*/
+/* Moves only the thin section along the path */
 
-@keyframes ribbonPathMove {
-
+@keyframes heroRibbonTravel {
   0% {
     stroke-dashoffset: 180;
   }
 
   100% {
-    stroke-dashoffset: -5000;
+    stroke-dashoffset: -1000;
   }
-
 }
 
 
@@ -653,11 +642,6 @@ p {
   position: relative;
   overflow: hidden;
 
-  /*
-    Tall enough to create the large
-    final-page composition from your reference.
-  */
-
   min-height: 800px;
 
   padding: 170px 32px;
@@ -710,11 +694,6 @@ p {
   animation: closingRibbonTravel 5s linear infinite;
 }
 
-
-/*
-   Same continuous travelling motion
-   as the hero ribbon.
-*/
 
 @keyframes closingRibbonTravel {
 
