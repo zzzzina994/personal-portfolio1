@@ -8,6 +8,7 @@
   --accent-dark: #824c6c;
   --soft-magenta: #f2e5ec;
   --max-width: 1180px;
+  --page-margin: 32px;
 }
 
 * {
@@ -85,7 +86,7 @@ p {
 .nav-container {
   max-width: var(--max-width);
   margin: auto;
-  padding: 18px 32px;
+  padding: 18px var(--page-margin);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -131,7 +132,12 @@ p {
 .hero-content {
   position: relative;
   z-index: 3;
-  width: min(var(--max-width), calc(100% - 64px));
+
+  width: min(
+    var(--max-width),
+    calc(100% - (var(--page-margin) * 2))
+  );
+
   margin: 0 auto;
   padding: 110px 0 130px;
 }
@@ -245,21 +251,45 @@ p {
 
 .section {
   position: relative;
+
   max-width: var(--max-width);
+
   margin: 0 auto;
-  padding: 130px 32px;
+
+  /*
+    SAME MARGIN AS THE ORIGINAL
+    VERSION YOU GAVE ME
+  */
+  padding: 130px var(--page-margin);
 }
+
+
+/*
+   Soft background section.
+
+   IMPORTANT:
+   The background reaches the full
+   width of the screen, while the
+   CONTENT keeps the same 32px
+   side margin as the other sections.
+*/
 
 .section-soft {
   max-width: none;
+
+  padding-top: 130px;
+  padding-bottom: 130px;
+
   padding-left: max(
-    32px,
-    calc((100vw - var(--max-width)) / 2 + 32px)
+    var(--page-margin),
+    calc((100vw - var(--max-width)) / 2 + var(--page-margin))
   );
+
   padding-right: max(
-    32px,
-    calc((100vw - var(--max-width)) / 2 + 32px)
+    var(--page-margin),
+    calc((100vw - var(--max-width)) / 2 + var(--page-margin))
   );
+
   background: #f6eff3;
 }
 
@@ -467,6 +497,7 @@ p {
   padding: 42px;
   border: 1px solid var(--line);
   background: var(--card);
+
   transition:
     transform 0.3s ease,
     border-color 0.3s ease;
@@ -632,6 +663,7 @@ p {
 
 /* =========================
    CLOSING PAGE
+   FULL BLACK
 ========================= */
 
 .closing-section {
@@ -640,10 +672,14 @@ p {
 
   min-height: 800px;
 
-  padding: 170px 32px;
+  /*
+    FULL BLACK FINAL PAGE
+  */
+  background: #000000;
 
-  /* ORIGINAL DARK BACKGROUND */
-  background: #211d21;
+  padding: 170px var(--page-margin);
+
+  color: #faf7f8;
 }
 
 
@@ -669,7 +705,14 @@ p {
 
 .closing-ribbon-thick {
   fill: none;
-  stroke: #dfc5d3;
+
+  /*
+    Dark grey ribbon on black.
+    This keeps the ribbon visible
+    without bringing back the pink page.
+  */
+  stroke: #1c1c1c;
+
   stroke-width: 42;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -685,23 +728,26 @@ p {
   stroke-linecap: round;
   stroke-linejoin: round;
 
-  stroke-dasharray: 850 2500;
-  stroke-dashoffset: 0;
+  /*
+    KEEPING THE RIBBON STYLE
+  */
+  stroke-dasharray: 180 1000;
+  stroke-dashoffset: 180;
 
-  animation: closingRibbonTravel 5s linear infinite;
+  animation: closingRibbonTravel 6s linear infinite;
 }
 
 
+/* Only the thin line moves */
+
 @keyframes closingRibbonTravel {
-
-  from {
-    stroke-dashoffset: 0;
+  0% {
+    stroke-dashoffset: 180;
   }
 
-  to {
-    stroke-dashoffset: -3350;
+  100% {
+    stroke-dashoffset: -1000;
   }
-
 }
 
 
@@ -710,8 +756,11 @@ p {
 .closing-content {
   position: relative;
   z-index: 2;
+
   max-width: 850px;
-  margin: auto;
+
+  margin: 0 auto;
+
   text-align: center;
 }
 
@@ -722,21 +771,28 @@ p {
 
 .closing-content h2 {
   margin-bottom: 30px;
+
   max-width: 850px;
+
   margin-left: auto;
   margin-right: auto;
+
   color: #faf7f8;
 }
 
 .closing-content > p:not(.eyebrow) {
   max-width: 850px;
+
   margin: 0 auto;
+
   color: #c5bbc1;
+
   font-size: 1.05rem;
 }
 
 .closing-tags {
   margin-top: 35px;
+
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -745,29 +801,41 @@ p {
 
 .closing-tags span {
   padding: 8px 14px;
+
   border: 1px solid rgba(241, 201, 220, 0.25);
+
   border-radius: 999px;
+
   color: #f1c9dc;
+
   font-size: 0.82rem;
 }
 
 
 /* =========================
    CONTACT
+   BLACK CONTINUES
 ========================= */
 
 .contact-section {
   max-width: none;
+
   width: 100%;
+
   margin: 0;
-  padding: 160px 32px 130px;
-  background: var(--text);
+
+  padding: 160px var(--page-margin) 130px;
+
+  background: #000000;
+
   color: #faf7f8;
 }
 
 .contact-inner {
   max-width: 800px;
-  margin: auto;
+
+  margin: 0 auto;
+
   text-align: center;
 }
 
@@ -777,23 +845,35 @@ p {
 
 .contact-inner h2 {
   margin-bottom: 30px;
+
+  color: #faf7f8;
+
   font-size: clamp(3rem, 6vw, 5.5rem);
 }
 
 .contact-inner > p:not(.contact-location) {
   max-width: 650px;
+
   margin: 0 auto;
+
   color: #c5bbc1;
+
   font-size: 1.05rem;
 }
 
 .email-link {
   display: inline-block;
+
   margin-top: 45px;
+
   color: #f1c9dc;
+
   font-family: "Playfair Display", serif;
+
   font-size: clamp(1.7rem, 4vw, 3rem);
+
   border-bottom: 1px solid rgba(241, 201, 220, 0.35);
+
   transition:
     color 0.25s ease,
     border-color 0.25s ease;
@@ -801,12 +881,15 @@ p {
 
 .email-link:hover {
   color: #ffffff;
+
   border-color: #ffffff;
 }
 
 .contact-location {
   margin-top: 28px !important;
+
   color: #a99da5 !important;
+
   font-size: 0.9rem !important;
 }
 
@@ -817,18 +900,27 @@ p {
 
 .site-footer {
   width: 100%;
-  padding: 25px 32px;
-  background: #211d21;
+
+  padding: 25px var(--page-margin);
+
+  background: #0b0b0b;
+
   color: #8f858c;
+
   font-size: 0.78rem;
 }
 
 .footer-inner {
   max-width: var(--max-width);
+
   margin: 0 auto;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 20px;
 }
 
@@ -842,6 +934,10 @@ p {
 ========================= */
 
 @media (max-width: 900px) {
+
+  :root {
+    --page-margin: 28px;
+  }
 
   .nav-container {
     align-items: flex-start;
@@ -889,6 +985,10 @@ p {
 
 @media (max-width: 620px) {
 
+  :root {
+    --page-margin: 20px;
+  }
+
   .nav-container {
     padding: 16px 20px;
   }
@@ -901,6 +1001,9 @@ p {
     font-size: 0.78rem;
   }
 
+
+  /* Main sections */
+
   .section {
     padding: 90px 20px;
   }
@@ -908,10 +1011,17 @@ p {
   .section-soft {
     padding-left: 20px;
     padding-right: 20px;
+
+    padding-top: 90px;
+    padding-bottom: 90px;
   }
+
+
+  /* Hero */
 
   .hero-content {
     width: calc(100% - 40px);
+
     padding: 90px 0;
   }
 
@@ -927,28 +1037,50 @@ p {
     font-size: 0.76rem;
   }
 
+
+  /* Projects */
+
   .project-card {
     min-height: auto;
+
     padding: 30px;
   }
 
+
+  /* Timeline */
+
   .timeline-item {
     grid-template-columns: 1fr;
+
     gap: 10px;
   }
+
+
+  /* Images */
 
   .image-row,
   .creative-images {
     grid-template-columns: 1fr;
   }
 
+
+  /* Community */
+
   .community-card {
     padding: 30px;
   }
 
+
+  /* Closing page */
+
   .closing-section {
     min-height: 650px;
+
     padding: 110px 20px;
+  }
+
+  .closing-content {
+    width: 100%;
   }
 
   .closing-content h2 {
@@ -963,14 +1095,25 @@ p {
     stroke-width: 2.5;
   }
 
+
+  /* Contact */
+
   .contact-section {
     padding: 110px 20px;
   }
 
+  .contact-inner {
+    width: 100%;
+  }
+
   .email-link {
     font-size: 1.6rem;
+
     overflow-wrap: anywhere;
   }
+
+
+  /* Footer */
 
   .site-footer {
     padding: 25px 20px;
@@ -978,8 +1121,12 @@ p {
 
   .footer-inner {
     flex-direction: column;
+
     align-items: flex-start;
   }
+
+
+  /* Ribbons */
 
   .ribbon-thick,
   .closing-ribbon-thick {
@@ -1006,7 +1153,9 @@ p {
   .ribbon-thin,
   .closing-ribbon-line {
     animation: none;
+
     stroke-dasharray: none;
+
     stroke-dashoffset: 0;
   }
 
