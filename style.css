@@ -51,7 +51,7 @@ textarea {
 
 
 /* =========================================================
-   GLOBAL TYPOGRAPHY
+   TYPOGRAPHY
 ========================================================= */
 
 h1,
@@ -74,7 +74,7 @@ p {
 
 
 /* =========================================================
-   HEADER / NAVIGATION
+   HEADER / NAV
 ========================================================= */
 
 .site-header {
@@ -91,6 +91,7 @@ p {
     var(--max-width),
     calc(100% - (var(--page-margin) * 2))
   );
+
   margin: 0 auto;
 
   display: flex;
@@ -153,7 +154,9 @@ p {
 
 .hero-kicker {
   margin-bottom: 18px;
+
   color: var(--accent-dark);
+
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -162,6 +165,7 @@ p {
 
 .hero h1 {
   max-width: 900px;
+
   margin-bottom: 28px;
 
   font-size: clamp(3.2rem, 7vw, 6.8rem);
@@ -183,6 +187,7 @@ p {
 .hero-ribbon {
   position: absolute;
   inset: 0;
+
   z-index: 1;
 
   pointer-events: none;
@@ -199,22 +204,20 @@ p {
 
 .ribbon-thick {
   fill: none;
+
   stroke: #f0e5eb;
   stroke-width: 42;
+
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-
-/*
-   The thin line stays continuous.
-   It is NOT broken into dashed pieces.
-*/
-
 .ribbon-thin {
   fill: none;
+
   stroke: #b77b9e;
   stroke-width: 3;
+
   stroke-linecap: round;
   stroke-linejoin: round;
 
@@ -288,6 +291,7 @@ p {
 
 .section-heading h2 {
   margin-bottom: 18px;
+
   font-size: clamp(2.2rem, 4vw, 4rem);
   letter-spacing: -0.04em;
 }
@@ -340,7 +344,7 @@ p {
 
 
 /* =========================================================
-   TAGS / PILLS
+   TAGS
 ========================================================= */
 
 .tags {
@@ -366,7 +370,7 @@ p {
 
 
 /* =========================================================
-   ABOUT / INTRO
+   ABOUT
 ========================================================= */
 
 .about-grid {
@@ -418,6 +422,7 @@ p {
 
 .timeline-year {
   color: var(--accent-dark);
+
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -449,6 +454,7 @@ p {
   padding: 32px;
 
   background: #ffffff;
+
   border: 1px solid var(--line);
   border-radius: 24px;
 
@@ -467,6 +473,7 @@ p {
   margin-bottom: 35px;
 
   color: var(--accent);
+
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -474,7 +481,7 @@ p {
 
 
 /* =========================================================
-   EXPERIENCE / ACTIVITIES
+   ACTIVITIES
 ========================================================= */
 
 .activity-list {
@@ -519,6 +526,7 @@ p {
   padding: 28px;
 
   background: #ffffff;
+
   border: 1px solid var(--line);
   border-radius: 20px;
 }
@@ -542,6 +550,7 @@ p {
   padding: 28px;
 
   background: #ffffff;
+
   border: 1px solid var(--line);
   border-radius: 20px;
 }
@@ -556,7 +565,7 @@ p {
 
 
 /* =========================================================
-   CREATIVE WORK
+   CREATIVE
 ========================================================= */
 
 .creative-grid {
@@ -569,6 +578,7 @@ p {
   overflow: hidden;
 
   background: #ffffff;
+
   border: 1px solid var(--line);
   border-radius: 20px;
 }
@@ -589,7 +599,7 @@ p {
 
 
 /* =========================================================
-   PHOTO SECTIONS
+   PHOTOS
 ========================================================= */
 
 .photo-grid {
@@ -609,7 +619,7 @@ p {
 
 
 /* =========================================================
-   QUOTE / STATEMENT
+   QUOTE
 ========================================================= */
 
 .quote-section {
@@ -636,7 +646,7 @@ p {
 
 /* =========================================================
    CLOSING SECTION
-   KEEP THIS LIGHT / PINK
+   LIGHT / PINK
 ========================================================= */
 
 .closing-section {
@@ -743,8 +753,8 @@ p {
 
 
 /* =========================================================
-   CONTACT / EMAIL SECTION
-   THIS ONE IS BLACK
+   CONTACT / EMAIL
+   BLACK
 ========================================================= */
 
 .contact-section {
@@ -756,6 +766,7 @@ p {
   padding: 160px var(--page-margin) 130px;
 
   background: #000000;
+
   color: #faf7f8;
 }
 
@@ -815,7 +826,9 @@ p {
 
 .contact-links a:hover {
   background: #faf7f8;
+
   border-color: #faf7f8;
+
   color: #000000;
 }
 
@@ -830,6 +843,7 @@ p {
   padding: 25px var(--page-margin);
 
   background: #0b0b0b;
+
   color: #8f858c;
 
   font-size: 0.78rem;
@@ -852,7 +866,7 @@ p {
 
 
 /* =========================================================
-   BUTTONS / LINKS
+   BUTTONS
 ========================================================= */
 
 .button {
@@ -978,7 +992,6 @@ p {
   .closing-section {
     min-height: 700px;
   }
-
 }
 
 
@@ -1193,7 +1206,6 @@ p {
     flex-direction: column;
     align-items: flex-start;
   }
-
 }
 
 
@@ -1210,6 +1222,7 @@ p {
   .ribbon-thin,
   .closing-ribbon-line {
     animation: none;
+
     stroke-dasharray: none;
     stroke-dashoffset: 0;
   }
@@ -1218,4 +1231,42 @@ p {
   .contact-links a {
     transition: none;
   }
+}
+
+
+/* =========================================================
+   FINAL COLOR OVERRIDE
+   THIS IS INTENTIONALLY AT THE VERY BOTTOM
+========================================================= */
+
+/* SECTION BEFORE EMAIL = LIGHT/PINK */
+
+.closing-section {
+  background: #f0e5eb !important;
+  color: #29242a !important;
+}
+
+.closing-section h1,
+.closing-section h2,
+.closing-section h3,
+.closing-section p {
+  color: #29242a !important;
+}
+
+
+/* ONLY EMAIL/CONTACT SECTION = BLACK */
+
+.contact-section {
+  background: #000000 !important;
+  color: #faf7f8 !important;
+}
+
+.contact-section h1,
+.contact-section h2,
+.contact-section h3 {
+  color: #faf7f8 !important;
+}
+
+.contact-section p {
+  color: #bdb5ba !important;
 }
