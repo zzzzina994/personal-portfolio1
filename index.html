@@ -2,24 +2,188 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Prajina Shakya | Portfolio</title>
-
   <meta name="description" content="Portfolio of Prajina Shakya: Model UN leadership, community work, technology and data projects, and creative practice. Kathmandu, Nepal.">
+
   <meta property="og:title" content="Prajina Shakya | Portfolio">
   <meta property="og:description" content="Exploring ideas. Building things. Finding my path.">
   <meta property="og:image" content="https://zzzzina994.github.io/personal-portfolio1/prajina.about.jpeg">
 
+  <title>Prajina Shakya | Portfolio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-
-  <!-- HERO RIBBON OVERRIDE -->
   <style>
+
+    :root {
+      --bg: #faf7f8;
+      --card: #ffffff;
+      --text: #29242a;
+      --muted: #746d74;
+      --line: #e5dce2;
+      --accent: #a66a89;
+      --accent-dark: #824c6c;
+      --soft-magenta: #f2e5ec;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 4vw, 4.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      font-size: 1.65rem;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 247, 248, 0.9);
+      border-bottom: 1px solid rgba(229, 220, 226, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-container {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.88rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: min(var(--max-width), calc(100% - 64px));
+      margin: 0 auto;
+      padding: 110px 0 130px;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin-bottom: 26px;
+    }
+
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-location {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .hero-description {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+
+    /* =========================
+       ONE SINGLE RIBBON
+    ========================= */
+
     .hero-ribbon {
       position: absolute;
       inset: 0;
@@ -31,24 +195,34 @@
     .hero-ribbon svg {
       width: 100%;
       height: 100%;
+      display: block;
       overflow: visible;
     }
 
-    .hero-ribbon .single-ribbon {
+    .ribbon-thick,
+    .ribbon-thin {
       fill: none;
-      stroke: #b887a5;
-      stroke-width: 3;
       stroke-linecap: round;
       stroke-linejoin: round;
-      stroke-dasharray: 1800;
-      stroke-dashoffset: 1800;
-      opacity: 0.7;
-      animation: singleRibbonDraw 9s ease-in-out infinite;
+      stroke-dasharray: 2400;
+      stroke-dashoffset: 2400;
+      animation: ribbonMove 9s ease-in-out infinite;
     }
 
-    @keyframes singleRibbonDraw {
+    .ribbon-thick {
+      stroke: #f0e5eb;
+      stroke-width: 42;
+    }
+
+    .ribbon-thin {
+      stroke: #b77b9e;
+      stroke-width: 3;
+    }
+
+    @keyframes ribbonMove {
+
       0% {
-        stroke-dashoffset: 1800;
+        stroke-dashoffset: 2400;
       }
 
       45% {
@@ -60,66 +234,778 @@
       }
 
       100% {
-        stroke-dashoffset: -1800;
+        stroke-dashoffset: -2400;
       }
+
     }
 
+
+    /* =========================
+       HERO HIGHLIGHTS
+    ========================= */
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 35px;
+    }
+
+    .hero-highlights span {
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+      position: relative;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 130px 32px;
+    }
+
+    .section-soft {
+      max-width: none;
+      padding-left: max(32px, calc((100vw - var(--max-width)) / 2 + 32px));
+      padding-right: max(32px, calc((100vw - var(--max-width)) / 2 + 32px));
+      background: #f6eff3;
+    }
+
+    .section-number {
+      margin-bottom: 55px;
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 65px;
+    }
+
+    .section-intro h2 {
+      margin-bottom: 20px;
+    }
+
+    .section-intro p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 90px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      max-width: 720px;
+    }
+
+    .about-text p {
+      max-width: 700px;
+      color: var(--muted);
+    }
+
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .interest-list span {
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    .portrait {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+
+
+    /* =========================
+       ACADEMICS
+    ========================= */
+
+    .academic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+    }
+
+    .school-block {
+      max-width: 600px;
+    }
+
+    .school-block h3 {
+      margin-bottom: 8px;
+    }
+
+    .school-block p {
+      margin-bottom: 7px;
+      color: var(--muted);
+    }
+
+    .small-heading {
+      margin-bottom: 20px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .skill-group {
+      margin-bottom: 25px;
+    }
+
+    .skill-group strong {
+      font-size: 0.92rem;
+    }
+
+    .skill-group p {
+      margin-top: 5px;
+      color: var(--muted);
+    }
+
+    .certification-heading {
+      margin-top: 50px;
+    }
+
+    .credential-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .credential {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .credential strong {
+      font-size: 0.95rem;
+    }
+
+    .credential span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .learning-heading {
+      margin-top: 45px;
+    }
+
+    .current-learning {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .current-learning strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .current-learning span {
+      color: var(--accent-dark);
+      font-size: 0.85rem;
+    }
+
+    .current-learning p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .featured-credential {
+      margin-top: 110px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .featured-copy h2 {
+      margin-bottom: 18px;
+    }
+
+    .featured-copy > p:not(.eyebrow) {
+      margin-bottom: 5px;
+      font-size: 1.05rem;
+    }
+
+    .certificate-image {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 400px;
+      padding: 42px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #d3bdca;
+    }
+
+    .project-number {
+      margin-bottom: 65px;
+      color: var(--accent);
+      font-family: "Playfair Display", serif;
+      font-size: 2.3rem;
+    }
+
+    .card-category {
+      margin-bottom: 12px;
+      color: var(--accent-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+    }
+
+    .project-card h3 {
+      margin-bottom: 18px;
+    }
+
+    .project-card p:not(.card-category) {
+      color: var(--muted);
+    }
+
+    .project-focus {
+      margin-top: 30px;
+      color: var(--accent-dark);
+      font-size: 0.85rem;
+    }
+
+
+    /* =========================
+       LEADERSHIP
+    ========================= */
+
+    .timeline {
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 45px;
+      padding: 45px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-year {
+      color: var(--accent-dark);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .timeline-content {
+      max-width: 780px;
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 15px;
+    }
+
+    .timeline-content p:last-child {
+      color: var(--muted);
+    }
+
+    .image-row {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .image-row img {
+      width: 100%;
+    }
+
+
+    /* =========================
+       COMMUNITY
+    ========================= */
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .community-card {
+      padding: 35px;
+      border-top: 2px solid var(--accent);
+      background: var(--card);
+    }
+
+    .community-number {
+      display: block;
+      margin-bottom: 45px;
+      color: var(--accent);
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+    }
+
+    .community-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .community-card p:last-child {
+      color: var(--muted);
+    }
+
+    .community-images {
+      margin-top: 50px;
+    }
+
+
+    /* =========================
+       CREATIVE
+    ========================= */
+
+    .creative-block {
+      padding: 70px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .creative-heading {
+      max-width: 720px;
+      margin-bottom: 35px;
+    }
+
+    .creative-heading h3 {
+      margin-bottom: 15px;
+    }
+
+    .creative-heading > p:last-child {
+      color: var(--muted);
+    }
+
+    .creative-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .creative-images img {
+      width: 100%;
+    }
+
+    .nail-content {
+      max-width: 500px;
+    }
+
+    .dance-photo {
+      max-width: 520px;
+    }
+
+
+    /* =========================
+       CLOSING
+    ========================= */
+
+    .closing-section {
+      position: relative;
+      overflow: hidden;
+      padding: 170px 32px;
+      background: #f0e5eb;
+    }
+
+    .closing-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .closing-content h2 {
+      margin-bottom: 30px;
+    }
+
+    .closing-content > p:not(.eyebrow) {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .closing-tags {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .closing-tags span {
+      padding: 8px 14px;
+      border: 1px solid rgba(130, 76, 108, 0.2);
+      border-radius: 999px;
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-section {
+      padding: 160px 32px 130px;
+      background: var(--text);
+      color: #faf7f8;
+      max-width: none;
+    }
+
+    .contact-inner {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-inner h2 {
+      margin-bottom: 30px;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+    }
+
+    .contact-inner > p:not(.contact-location) {
+      max-width: 650px;
+      margin: 0 auto;
+      color: #c5bbc1;
+      font-size: 1.05rem;
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 45px;
+      color: #f1c9dc;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      border-bottom: 1px solid rgba(241, 201, 220, 0.35);
+      transition:
+        color 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .email-link:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .contact-location {
+      margin-top: 28px !important;
+      color: #a99da5 !important;
+      font-size: 0.9rem !important;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .site-footer {
+      width: 100%;
+      padding: 25px 32px;
+      background: #211d21;
+      color: #8f858c;
+      font-size: 0.78rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .nav-container {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .about-grid,
+      .academic-grid,
+      .featured-credential {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .project-grid,
+      .community-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+
+      .hero-content {
+        padding-top: 90px;
+        padding-bottom: 100px;
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 620px) {
+
+      .nav-container {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        gap: 12px 16px;
+      }
+
+      .nav-links a {
+        font-size: 0.78rem;
+      }
+
+      .section {
+        padding: 90px 20px;
+      }
+
+      .section-soft {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero-content {
+        width: calc(100% - 40px);
+        padding: 90px 0;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 15vw, 5rem);
+      }
+
+      .hero-highlights {
+        gap: 7px;
+      }
+
+      .hero-highlights span {
+        font-size: 0.76rem;
+      }
+
+      .project-card {
+        min-height: auto;
+        padding: 30px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .image-row,
+      .creative-images {
+        grid-template-columns: 1fr;
+      }
+
+      .community-card {
+        padding: 30px;
+      }
+
+      .closing-section {
+        padding: 110px 20px;
+      }
+
+      .contact-section {
+        padding: 110px 20px;
+      }
+
+      .email-link {
+        font-size: 1.6rem;
+        overflow-wrap: anywhere;
+      }
+
+      .site-footer {
+        padding: 25px 20px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .ribbon-thick {
+        stroke-width: 30;
+      }
+
+      .ribbon-thin {
+        stroke-width: 2.5;
+      }
+
+    }
+
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
     @media (prefers-reduced-motion: reduce) {
-      .hero-ribbon .single-ribbon {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .ribbon-thick,
+      .ribbon-thin {
         animation: none;
         stroke-dashoffset: 0;
       }
+
+      .project-card {
+        transition: none;
+      }
+
     }
+
   </style>
 </head>
 
+
 <body>
+
 
   <!-- =========================
        NAVIGATION
-  ========================== -->
+  ========================= -->
 
   <header class="site-header">
+
     <div class="nav-container">
 
-      <a href="#top" class="logo">Prajina Shakya</a>
+      <a href="#top" class="logo">
+        Prajina Shakya
+      </a>
 
       <nav class="nav-links">
+
         <a href="#about">About</a>
+
         <a href="#academics">Academics</a>
+
         <a href="#projects">Projects</a>
+
         <a href="#leadership">Leadership</a>
+
         <a href="#community">Community</a>
+
         <a href="#creative">Creative</a>
+
         <a href="#sports">Sports</a>
+
         <a href="#contact">Contact</a>
+
       </nav>
 
     </div>
+
   </header>
 
 
   <main id="top">
 
+
     <!-- =========================
          HERO
-    ========================== -->
+    ========================= -->
 
     <section class="hero">
 
+      <!-- ONE RIBBON: THICK + THIN ON SAME PATH -->
+
       <div class="hero-ribbon" aria-hidden="true">
 
-        <svg viewBox="0 0 1600 700" preserveAspectRatio="none">
+        <svg viewBox="0 0 1600 800" preserveAspectRatio="none">
 
-          <!-- ONE continuous ribbon -->
           <path
-            class="single-ribbon"
-            d="M -40 590
-               C 170 520, 310 650, 470 560
-               C 620 475, 650 180, 820 245
-               C 980 305, 930 610, 1100 615
-               C 1240 620, 1320 385, 1650 300">
-          </path>
+            class="ribbon-thick"
+            d="M -80 650
+               C 180 570, 330 760, 540 520
+               C 690 350, 700 190, 850 300
+               C 1030 430, 1010 690, 1190 590
+               C 1330 510, 1420 360, 1680 300"
+          ></path>
+
+          <path
+            class="ribbon-thin"
+            d="M -80 650
+               C 180 570, 330 760, 540 520
+               C 690 350, 700 190, 850 300
+               C 1030 430, 1010 690, 1190 590
+               C 1330 510, 1420 360, 1680 300"
+          ></path>
 
         </svg>
 
@@ -128,30 +1014,47 @@
 
       <div class="hero-content">
 
-        <div class="eyebrow">PRAJINA SHAKYA</div>
-
         <h1>
+
           Exploring ideas.<br>
+
           Building things.<br>
+
           <em>Finding my path.</em>
+
         </h1>
+
 
         <p class="hero-location">
           Kathmandu, Nepal
         </p>
 
+
         <p class="hero-description">
-          I turn ideas into things people can use: a working website,
-          a committee resolution, or a project that makes a problem easier
-          to understand. Technology gives me the tools; research, community
-          work, and creativity teach me who they're actually for.
+
+          I turn ideas into things people can use: a working website, a committee resolution, or a project that makes a problem easier to understand. Technology gives me the tools; research, community work, and creativity teach me who they're actually for.
+
         </p>
 
+
         <div class="hero-highlights">
-          <span>Vice Chair · UNFCCC</span>
-          <span>River Clean-Up · 70+ Volunteers</span>
-          <span>Cybersecurity Awareness Certificate</span>
-          <span>Python · SQL · Web Development</span>
+
+          <span>
+            Vice Chair · UNFCCC
+          </span>
+
+          <span>
+            River Clean-Up · 70+ Volunteers
+          </span>
+
+          <span>
+            Cybersecurity Awareness Certificate
+          </span>
+
+          <span>
+            Python · SQL · Web Development
+          </span>
+
         </div>
 
       </div>
@@ -159,15 +1062,17 @@
     </section>
 
 
+
     <!-- =========================
          ABOUT
-    ========================== -->
+    ========================= -->
 
     <section class="section" id="about">
 
       <div class="section-number">
         01 — ABOUT
       </div>
+
 
       <div class="about-grid">
 
@@ -178,32 +1083,39 @@
           </h2>
 
           <p>
-            I like working across disciplines: technology, research,
-            presentations, art, music, and community projects. I'm drawn
-            to questions that don't have just one way of being answered.
+            I like working across disciplines: technology, research, presentations, art, music, and community projects. I'm drawn to questions that don't have just one way of being answered.
           </p>
 
           <p>
-            That's why a data project and a mandala drawing can live on the
-            same page. Both start with curiosity and end with something
-            I can share with someone else.
+            That's why a data project and a mandala drawing can live on the same page. Both start with curiosity and end with something I can share with someone else.
           </p>
 
+
           <div class="interest-list">
+
             <span>Technology</span>
+
             <span>Business</span>
+
             <span>Data &amp; AI</span>
+
             <span>Cybersecurity</span>
+
             <span>Sustainability</span>
+
           </div>
 
         </div>
 
-        <div class="portrait-placeholder">
+
+        <div>
+
           <img
             src="prajina.about.jpeg"
             alt="Prajina Shakya"
+            class="portrait"
           >
+
         </div>
 
       </div>
@@ -211,9 +1123,10 @@
     </section>
 
 
+
     <!-- =========================
-         ACADEMICS
-    ========================== -->
+         ACADEMICS & SKILLS
+    ========================= -->
 
     <section class="section section-soft" id="academics">
 
@@ -221,31 +1134,28 @@
         02 — ACADEMICS &amp; SKILLS
       </div>
 
+
       <div class="section-intro">
 
         <h2>
-          Academic foundation
+          Academic foundation and the skills I'm building.
         </h2>
-
-        <p>
-          A management background with a strong interest in computer science,
-          technology, data, and problem-solving.
-        </p>
 
       </div>
 
 
       <div class="academic-grid">
 
+
         <div class="school-block">
 
-          <h3>
-            St. Mary's Higher Secondary School
-          </h3>
+          <div class="small-heading">
+            Academic Foundation
+          </div>
 
-          <p>
-            Jawalakhel, Lalitpur, Nepal
-          </p>
+          <h3>
+            St. Mary's Higher Secondary School, Jawalakhel, Lalitpur, Nepal
+          </h3>
 
           <p>
             Grade 12 · Class of 2026
@@ -256,8 +1166,139 @@
           </p>
 
           <p>
-            Coursework included computer applications, programming,
-            databases, problem-solving, and management.
+            Coursework included computer applications, programming, databases, problem-solving, and management.
+          </p>
+
+
+          <div class="small-heading certification-heading">
+            Skills
+          </div>
+
+
+          <div class="skill-group">
+
+            <strong>
+              Technical
+            </strong>
+
+            <p>
+              HTML · CSS · Python · SQL · Web Development
+            </p>
+
+          </div>
+
+
+          <div class="skill-group">
+
+            <strong>
+              Academic
+            </strong>
+
+            <p>
+              Research · Logical Problem-Solving · Data Analysis
+            </p>
+
+          </div>
+
+
+          <div class="skill-group">
+
+            <strong>
+              Leadership
+            </strong>
+
+            <p>
+              Public Speaking · Presentation · Facilitation · Team Coordination · Collaboration
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div>
+
+          <div class="small-heading">
+            Certifications
+          </div>
+
+
+          <div class="credential-list">
+
+            <div class="credential">
+
+              <strong>
+                Introduction to Cybersecurity Awareness
+              </strong>
+
+              <span>
+                HP LIFE &amp; HP Foundation · 2026
+              </span>
+
+            </div>
+
+
+            <div class="credential">
+
+              <strong>
+                Professional Networking for Career Growth
+              </strong>
+
+              <span>
+                HP LIFE &amp; HP Foundation · 2026
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="small-heading learning-heading">
+            Current Learning
+          </div>
+
+
+          <div class="current-learning">
+
+            <strong>
+              AI Learning Program
+            </strong>
+
+            <span>
+              American Spaces Nepal · 2026
+            </span>
+
+            <p>
+              Exploring how artificial intelligence can be applied to real-world ideas and problems.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="featured-credential">
+
+        <div class="featured-copy">
+
+          <div class="small-heading">
+            Featured Credential
+          </div>
+
+          <h2>
+            Turning an interest into a certified skill.
+          </h2>
+
+          <p>
+            Introduction to Cybersecurity Awareness
+          </p>
+
+          <p class="muted">
+            HP LIFE &amp; HP Foundation · 2026
           </p>
 
         </div>
@@ -265,128 +1306,10 @@
 
         <div>
 
-          <div class="small-heading">
-            Skills
-          </div>
-
-          <div class="skill-group">
-            <strong>Technical</strong>
-            <p>
-              HTML · CSS · Python · SQL · Web Development
-            </p>
-          </div>
-
-          <div class="skill-group">
-            <strong>Academic</strong>
-            <p>
-              Research · Logical Problem-Solving · Data Analysis
-            </p>
-          </div>
-
-          <div class="skill-group">
-            <strong>Leadership</strong>
-            <p>
-              Public Speaking · Presentation · Facilitation · Team Coordination · Collaboration
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- CERTIFICATIONS -->
-
-      <div class="certification-heading">
-
-        <div class="small-heading">
-          Certifications
-        </div>
-
-        <div class="credential-list">
-
-          <div class="credential">
-            <strong>
-              Introduction to Cybersecurity Awareness
-            </strong>
-
-            <span>
-              HP LIFE &amp; HP Foundation · 2026
-            </span>
-          </div>
-
-          <div class="credential">
-            <strong>
-              Professional Networking for Career Growth
-            </strong>
-
-            <span>
-              HP LIFE &amp; HP Foundation · 2026
-            </span>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- CURRENT LEARNING -->
-
-      <div class="learning-heading">
-
-        <div class="small-heading">
-          Current Learning
-        </div>
-
-        <div class="current-learning">
-
-          <strong>
-            AI Learning Program
-          </strong>
-
-          <span>
-            American Spaces Nepal · 2026
-          </span>
-
-          <p>
-            Exploring how artificial intelligence can be applied to
-            real-world ideas and problems.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- FEATURED CERTIFICATE -->
-
-      <div class="featured-credential">
-
-        <div class="featured-copy">
-
-          <div class="eyebrow">
-            FEATURED CREDENTIAL
-          </div>
-
-          <h2>
-            Introduction to Cybersecurity Awareness
-          </h2>
-
-          <p>
-            HP LIFE &amp; HP Foundation
-          </p>
-
-          <p class="muted">
-            2026
-          </p>
-
-        </div>
-
-        <div class="certificate-placeholder">
-
           <img
             src="certifi%20ate.jpeg"
             alt="HP LIFE Introduction to Cybersecurity Awareness certificate"
+            class="certificate-image"
             loading="lazy"
           >
 
@@ -397,9 +1320,10 @@
     </section>
 
 
+
     <!-- =========================
          PROJECTS
-    ========================== -->
+    ========================= -->
 
     <section class="section" id="projects">
 
@@ -407,21 +1331,18 @@
         03 — PROJECTS
       </div>
 
+
       <div class="section-intro">
 
         <h2>
-          Things I've built
+          Things I've built.
         </h2>
-
-        <p>
-          Projects where I turned an idea into something concrete,
-          from a website to an exploration of environmental data.
-        </p>
 
       </div>
 
 
       <div class="project-grid">
+
 
         <article class="project-card">
 
@@ -438,13 +1359,15 @@
           </h3>
 
           <p>
-            Built and coded this site from scratch to bring my academic work,
-            MUN experiences, certificates, community work, and creative
-            practice into one place. It pushed me to think about how someone
-            unfamiliar with my work would navigate and understand it.
+            Built and coded this site from scratch to bring my academic work, MUN experiences, certificates, community work, and creative practice into one place.
+          </p>
+
+          <p>
+            It pushed me to think about how someone unfamiliar with my work would navigate and understand it.
           </p>
 
         </article>
+
 
 
         <article class="project-card">
@@ -462,10 +1385,11 @@
           </h3>
 
           <p>
-            A project exploring how environmental data can be collected,
-            organized, and presented in a simple, understandable format.
-            It connects my interest in technology and data with environmental
-            issues that affect communities.
+            A project exploring how environmental data can be collected, organized, and presented in a simple, understandable format.
+          </p>
+
+          <p>
+            It connects my interest in technology and data with environmental issues that affect communities.
           </p>
 
         </article>
@@ -475,31 +1399,33 @@
     </section>
 
 
+
     <!-- =========================
          LEADERSHIP
-    ========================== -->
+    ========================= -->
 
-    <section class="section section-soft" id="leadership">
+    <section class="section" id="leadership">
 
       <div class="section-number">
         04 — LEADERSHIP
       </div>
 
+
       <div class="section-intro">
 
         <h2>
-          Model United Nations
+          Model United Nations.
         </h2>
 
         <p>
-          Four years of research, public speaking, negotiation,
-          and committee work.
+          Four years of research, public speaking, negotiation, and committee work.
         </p>
 
       </div>
 
 
       <div class="timeline">
+
 
         <div class="timeline-item">
 
@@ -514,20 +1440,17 @@
             </h3>
 
             <p>
-              Chaired sessions on climate policy, sustainable development,
-              and youth climate action, facilitating discussion among
-              20+ delegates.
+              Chaired sessions on climate policy, sustainable development, and youth climate action, facilitating discussion among 20+ delegates.
             </p>
 
             <p>
-              The experience taught me that leadership is not always about
-              having the strongest voice in the room. It is about creating
-              enough structure and confidence for everyone else to contribute.
+              The experience taught me that leadership is not always about having the strongest voice in the room. It is about creating enough structure and confidence for everyone else to contribute.
             </p>
 
           </div>
 
         </div>
+
 
 
         <div class="timeline-item">
@@ -543,15 +1466,13 @@
             </h3>
 
             <p>
-              Researched an assigned country's position on gender policy
-              and represented it in committee discussions and negotiations,
-              turning research into arguments and negotiating toward
-              shared solutions.
+              Researched an assigned country's position on gender policy and represented it in committee discussions and negotiations, turning research into arguments and negotiating toward shared solutions.
             </p>
 
           </div>
 
         </div>
+
 
 
         <div class="timeline-item">
@@ -567,10 +1488,7 @@
             </h3>
 
             <p>
-              Supported conference organization through group assignments,
-              communication, and behind-the-scenes coordination, which showed
-              me how much successful events depend on people working
-              reliably together.
+              Supported conference organization through group assignments, communication, and behind-the-scenes coordination, which showed me how much successful events depend on people working reliably together.
             </p>
 
           </div>
@@ -584,7 +1502,7 @@
 
         <img
           src="mun121.jpeg"
-          alt="Model United Nations"
+          alt="Model United Nations conference"
           loading="lazy"
         >
 
@@ -599,9 +1517,10 @@
     </section>
 
 
+
     <!-- =========================
          COMMUNITY
-    ========================== -->
+    ========================= -->
 
     <section class="section" id="community">
 
@@ -609,21 +1528,22 @@
         05 — COMMUNITY
       </div>
 
+
       <div class="section-intro">
 
         <h2>
-          Showing up beyond the classroom
+          Showing up beyond the classroom.
         </h2>
 
         <p>
-          Experiences that connected me with environmental, social,
-          and community-focused work.
+          Experiences that connected me with environmental, social, and community-focused work.
         </p>
 
       </div>
 
 
       <div class="community-grid">
+
 
         <article class="community-card">
 
@@ -640,13 +1560,11 @@
           </p>
 
           <p>
-            Joined 70+ volunteers and collected 7–8 large bags of waste
-            in a single day. One of the most memorable moments was seeing
-            passersby begin joining on their own, showing me how visible
-            action can encourage others to get involved.
+            Joined 70+ volunteers and collected 7–8 large bags of waste in a single day. One of the most memorable moments was seeing passersby begin joining on their own, showing me how visible action can encourage others to get involved.
           </p>
 
         </article>
+
 
 
         <article class="community-card">
@@ -664,13 +1582,11 @@
           </p>
 
           <p>
-            Rode in a breast cancer awareness campaign with 200+ participants.
-            Along the route I spoke with a passerby about why awareness mattered,
-            a small interaction that showed me community work can begin with
-            simply starting a conversation.
+            Rode in a breast cancer awareness campaign with 200+ participants. Along the route I spoke with a passerby about why awareness mattered, a small interaction that showed me community work can begin with simply starting a conversation.
           </p>
 
         </article>
+
 
 
         <article class="community-card">
@@ -688,10 +1604,7 @@
           </p>
 
           <p>
-            Supported young children with letters, music, coloring,
-            and everyday routines. Teaching taught me patience and attentiveness,
-            and my favorite moment was always when a child finally understood
-            something they had been struggling with.
+            Supported young children with letters, music, coloring, and everyday routines. Teaching taught me patience and attentiveness, and my favorite moment was always when a child finally understood something they had been struggling with.
           </p>
 
         </article>
@@ -722,26 +1635,23 @@
     </section>
 
 
-    <!-- =========================
-         CREATIVE
-    ========================== -->
 
-    <section class="section section-soft" id="creative">
+    <!-- =========================
+         CREATIVE WORK
+    ========================= -->
+
+    <section class="section" id="creative">
 
       <div class="section-number">
         06 — CREATIVE WORK
       </div>
 
+
       <div class="section-intro">
 
         <h2>
-          Creativity in different forms
+          Creativity in different forms.
         </h2>
-
-        <p>
-          Art, music, dance, and design have given me different ways
-          to experiment, practice, and express ideas.
-        </p>
 
       </div>
 
@@ -757,19 +1667,15 @@
           </p>
 
           <h3>
-            Building detail, one section at a time
+            Detail, patience, and a little bit of obsession.
           </h3>
 
           <p>
-            Mandala art started for me as lockdown boredom and turned into
-            something I fell in love with. I sketch in pencil, build each
-            section detail by detail, then trace everything in ink.
+            Mandala art started for me as lockdown boredom and turned into something I fell in love with. I sketch in pencil, build each section detail by detail, then trace everything in ink.
           </p>
 
           <p>
-            My Ganesh mandala took almost five days. A distant relative
-            saw an earlier piece online and asked for one, and it eventually
-            made its way to her home in America.
+            My Ganesh mandala took almost five days. A distant relative saw an earlier piece online and asked for one, and it eventually made its way to her home in America.
           </p>
 
         </div>
@@ -785,13 +1691,14 @@
 
           <img
             src="mandala2.jpeg"
-            alt="Mandala artwork detail"
+            alt="Mandala artwork"
             loading="lazy"
           >
 
         </div>
 
       </div>
+
 
 
       <!-- ACRYLIC -->
@@ -805,7 +1712,7 @@
           </p>
 
           <h3>
-            Exploring color and composition
+            Exploring color and composition.
           </h3>
 
           <p>
@@ -828,6 +1735,7 @@
       </div>
 
 
+
       <!-- MUSIC -->
 
       <div class="creative-block">
@@ -839,25 +1747,21 @@
           </p>
 
           <h3>
-            Finding My Voice
+            Finding My Voice.
           </h3>
 
           <p>
-            Singing started with my dad, who made it look effortless.
-            For a long time I didn't trust that I was any good, until
-            friends at school told me I was, and house competitions followed.
+            Singing started with my dad, who made it look effortless. For a long time I didn't trust that I was any good, until friends at school told me I was, and house competitions followed.
           </p>
 
           <p>
-            Singing alone always felt incomplete, so I picked up guitar.
-            The first song I sang and played at the same time was
-            "Stand By Me," still a core memory. Harmonica came from one thing:
-            the harmonica line in "Piano Man."
+            Singing alone always felt incomplete, so I picked up guitar. The first song I sang and played at the same time was "Stand By Me," still a core memory. Harmonica came from one thing: the harmonica line in "Piano Man."
           </p>
 
         </div>
 
       </div>
+
 
 
       <!-- DANCE -->
@@ -871,39 +1775,34 @@
           </p>
 
           <h3>
-            A constant since preschool
+            A constant since preschool.
           </h3>
 
           <p>
-            I've danced since preschool, and my school offered classes
-            from a young age. I've performed in group settings, including
-            a competition where our team placed second.
+            I've danced since preschool, and my school offered classes from a young age. I've performed in group settings, including a competition where our team placed second.
           </p>
 
           <p>
-            What keeps me coming back is how dance lets me express things
-            that are sometimes difficult to put into words.
+            What keeps me coming back is how dance lets me express things that are sometimes difficult to put into words.
           </p>
 
         </div>
 
 
-        <div class="creative-images">
-
-          <img
-            src="dance.jpeg"
-            alt="Dance performance"
-            loading="lazy"
-          >
-
-        </div>
+        <img
+          src="dance.jpeg"
+          alt="Dance performance"
+          class="dance-photo"
+          loading="lazy"
+        >
 
       </div>
 
 
+
       <!-- NAIL ART -->
 
-      <div class="creative-block final-creative-block">
+      <div class="creative-block">
 
         <div class="creative-heading nail-content">
 
@@ -912,18 +1811,15 @@
           </p>
 
           <h3>
-            Turning a small interest into a skill
+            Turning a small interest into a skill.
           </h3>
 
           <p>
-            Nail art has interested me since I was young. During my gap
-            after Grade 12, I turned that casual interest into an actual skill,
-            took classes, and earned my certification.
+            Nail art has interested me since I was young. During my gap after Grade 12, I turned that casual interest into an actual skill, took classes, and earned my certification.
           </p>
 
           <p>
-            What I enjoy most is bringing my art background into small,
-            intricate designs where even the smallest detail matters.
+            What I enjoy most is bringing my art background into small, intricate designs where even the smallest detail matters.
           </p>
 
         </div>
@@ -933,9 +1829,10 @@
     </section>
 
 
+
     <!-- =========================
          SPORTS
-    ========================== -->
+    ========================= -->
 
     <section class="section" id="sports">
 
@@ -943,22 +1840,19 @@
         07 — SPORTS &amp; STAYING ACTIVE
       </div>
 
+
       <div class="section-intro">
 
         <h2>
-          Movement on my own terms
+          Movement on my own terms.
         </h2>
 
         <p>
-          Swimming has been with me the longest. I trained outside school,
-          never as part of a team or competition. It was simply mine,
-          and it's the one activity where my mind goes quiet.
+          Swimming has been with me the longest. I trained outside school, never as part of a team or competition. It was simply mine, and it's the one activity where my mind goes quiet.
         </p>
 
         <p>
-          Football and badminton became more regular in Grade 10,
-          and I still play with friends when I can. All three give me
-          a way to step away from studying and screens, move, and be present.
+          Football and badminton became more regular in Grade 10, and I still play with friends when I can. All three give me a way to step away from studying and screens, move, and be present.
         </p>
 
       </div>
@@ -966,37 +1860,12 @@
     </section>
 
 
+
     <!-- =========================
          WHAT CONNECTS IT ALL
-    ========================== -->
+    ========================= -->
 
     <section class="closing-section" id="closing">
-
-      <div class="closing-ribbon" aria-hidden="true">
-
-        <svg viewBox="0 0 1600 700" preserveAspectRatio="none">
-
-          <path
-            d="M -40 470
-               C 180 390, 330 580, 500 450
-               C 700 300, 730 180, 900 300
-               C 1070 420, 1060 570, 1220 500
-               C 1370 435, 1430 290, 1650 220"
-            fill="none"
-            stroke="#b887a5"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-dasharray="1500"
-            stroke-dashoffset="1500"
-            opacity="0.65"
-            animation="none">
-          </path>
-
-        </svg>
-
-      </div>
-
 
       <div class="closing-content">
 
@@ -1009,18 +1878,28 @@
         </h2>
 
         <p>
-          Every section on this page started with a question I wanted
-          to explore — through code, research, a committee room,
-          community work, or a paintbrush. I use research and technology
-          to make ideas usable, and creative and community work to make
-          them human.
+          Every section on this page started with a question I wanted to explore — through code, research, a committee room, community work, or a paintbrush. I use research and technology to make ideas usable, and creative and community work to make them human.
         </p>
 
+
         <div class="closing-tags">
-          <span>Technology</span>
-          <span>Leadership</span>
-          <span>Creativity</span>
-          <span>Community</span>
+
+          <span>
+            Technology
+          </span>
+
+          <span>
+            Leadership
+          </span>
+
+          <span>
+            Creativity
+          </span>
+
+          <span>
+            Community
+          </span>
+
         </div>
 
       </div>
@@ -1028,28 +1907,27 @@
     </section>
 
 
+
     <!-- =========================
          CONTACT
-    ========================== -->
+    ========================= -->
 
-    <section class="section contact-section" id="contact">
-
-      <div class="section-number">
-        08 — CONTACT
-      </div>
+    <section class="contact-section" id="contact">
 
       <div class="contact-inner">
+
+        <div class="section-number">
+          08 — CONTACT
+        </div>
 
         <h2>
           This is only the beginning.
         </h2>
 
         <p>
-          I'm continuing to explore the space between technology,
-          research, leadership, community, and creativity, and I'm
-          looking forward to the next project, opportunity, or conversation
-          that gives me another question to pursue.
+          I'm continuing to explore the space between technology, research, leadership, community, and creativity, and I'm looking forward to the next project, opportunity, or conversation that gives me another question to pursue.
         </p>
+
 
         <a
           href="mailto:prajina.shakya20@gmail.com"
@@ -1057,6 +1935,7 @@
         >
           prajina.shakya20@gmail.com
         </a>
+
 
         <p class="contact-location">
           Kathmandu, Nepal
@@ -1069,9 +1948,10 @@
   </main>
 
 
+
   <!-- =========================
        FOOTER
-  ========================== -->
+  ========================= -->
 
   <footer class="site-footer">
 
@@ -1092,6 +1972,7 @@
     </div>
 
   </footer>
+
 
 </body>
 </html>
