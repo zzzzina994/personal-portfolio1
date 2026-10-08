@@ -198,10 +198,6 @@ p {
   stroke-linecap: round;
   stroke-linejoin: round;
 
-  /*
-    This makes the moving section
-    follow the exact SVG path.
-  */
   stroke-dasharray: 180 1000;
   stroke-dashoffset: 180;
 
@@ -209,7 +205,7 @@ p {
 }
 
 
-/* Moves only the thin section along the path */
+/* Only the thin line moves along the hero path */
 
 @keyframes heroRibbonTravel {
   0% {
@@ -646,7 +642,8 @@ p {
 
   padding: 170px 32px;
 
-  background: #f0e5eb;
+  /* ORIGINAL DARK BACKGROUND */
+  background: #211d21;
 }
 
 
@@ -720,6 +717,7 @@ p {
 
 .closing-content .section-number {
   margin-bottom: 55px;
+  color: #d8a9c2;
 }
 
 .closing-content h2 {
@@ -727,12 +725,13 @@ p {
   max-width: 850px;
   margin-left: auto;
   margin-right: auto;
+  color: #faf7f8;
 }
 
 .closing-content > p:not(.eyebrow) {
   max-width: 850px;
   margin: 0 auto;
-  color: var(--muted);
+  color: #c5bbc1;
   font-size: 1.05rem;
 }
 
@@ -746,9 +745,9 @@ p {
 
 .closing-tags span {
   padding: 8px 14px;
-  border: 1px solid rgba(130, 76, 108, 0.2);
+  border: 1px solid rgba(241, 201, 220, 0.25);
   border-radius: 999px;
-  color: var(--accent-dark);
+  color: #f1c9dc;
   font-size: 0.82rem;
 }
 
