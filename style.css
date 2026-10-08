@@ -184,7 +184,7 @@ p {
 }
 
 
-/* Thick background */
+/* Thick background ribbon */
 
 .ribbon-thick {
   fill: none;
@@ -195,7 +195,14 @@ p {
 }
 
 
-/* Thin moving line */
+/*
+   Thin ribbon line
+
+   IMPORTANT:
+   This is now ONE continuous line.
+   It is not broken into separate
+   dash segments.
+*/
 
 .ribbon-thin {
   fill: none;
@@ -204,22 +211,37 @@ p {
   stroke-linecap: round;
   stroke-linejoin: round;
 
-  stroke-dasharray: 180 1000;
-  stroke-dashoffset: 180;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
 
-  animation: heroRibbonTravel 6s linear infinite;
+  /*
+    Keeps the entire thin ribbon
+    visible as one continuous line.
+  */
+  animation: heroRibbonFlow 6s ease-in-out infinite;
 }
 
 
-/* Only the thin line moves along the hero path */
+/*
+   Subtle continuous ribbon movement.
 
-@keyframes heroRibbonTravel {
+   The line itself stays whole;
+   the animation gently shifts the
+   ribbon path instead of breaking
+   it into dash pieces.
+*/
+
+@keyframes heroRibbonFlow {
   0% {
-    stroke-dashoffset: 180;
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-1.5%);
   }
 
   100% {
-    stroke-dashoffset: -1000;
+    transform: translateX(0);
   }
 }
 
@@ -256,23 +278,11 @@ p {
 
   margin: 0 auto;
 
-  /*
-    SAME MARGIN AS THE ORIGINAL
-    VERSION YOU GAVE ME
-  */
   padding: 130px var(--page-margin);
 }
 
 
-/*
-   Soft background section.
-
-   IMPORTANT:
-   The background reaches the full
-   width of the screen, while the
-   CONTENT keeps the same 32px
-   side margin as the other sections.
-*/
+/* Full-width soft section */
 
 .section-soft {
   max-width: none;
@@ -663,7 +673,7 @@ p {
 
 /* =========================
    CLOSING PAGE
-   FULL BLACK
+   PINK / LIGHT
 ========================= */
 
 .closing-section {
@@ -673,13 +683,15 @@ p {
   min-height: 800px;
 
   /*
-    FULL BLACK FINAL PAGE
+    THIS SECTION IS NOT BLACK.
+    Only the EMAIL / CONTACT section
+    underneath it is black.
   */
-  background: #000000;
+  background: #f0e5eb;
 
   padding: 170px var(--page-margin);
 
-  color: #faf7f8;
+  color: var(--text);
 }
 
 
@@ -701,17 +713,15 @@ p {
 }
 
 
-/* Thick background ribbon */
+/* Thick closing ribbon */
 
 .closing-ribbon-thick {
   fill: none;
 
   /*
-    Dark grey ribbon on black.
-    This keeps the ribbon visible
-    without bringing back the pink page.
+    Original soft ribbon color
   */
-  stroke: #1c1c1c;
+  stroke: #dfc5d3;
 
   stroke-width: 42;
   stroke-linecap: round;
@@ -719,7 +729,7 @@ p {
 }
 
 
-/* Thin moving line */
+/* Thin closing ribbon */
 
 .closing-ribbon-line {
   fill: none;
@@ -729,29 +739,27 @@ p {
   stroke-linejoin: round;
 
   /*
-    KEEPING THE RIBBON STYLE
+    Original closing ribbon animation
   */
-  stroke-dasharray: 180 1000;
-  stroke-dashoffset: 180;
+  stroke-dasharray: 850 2500;
+  stroke-dashoffset: 0;
 
-  animation: closingRibbonTravel 6s linear infinite;
+  animation: closingRibbonTravel 5s linear infinite;
 }
 
-
-/* Only the thin line moves */
 
 @keyframes closingRibbonTravel {
-  0% {
-    stroke-dashoffset: 180;
+  from {
+    stroke-dashoffset: 0;
   }
 
-  100% {
-    stroke-dashoffset: -1000;
+  to {
+    stroke-dashoffset: -3350;
   }
 }
 
 
-/* Final page content */
+/* Closing content */
 
 .closing-content {
   position: relative;
@@ -766,7 +774,7 @@ p {
 
 .closing-content .section-number {
   margin-bottom: 55px;
-  color: #d8a9c2;
+  color: var(--accent-dark);
 }
 
 .closing-content h2 {
@@ -777,7 +785,7 @@ p {
   margin-left: auto;
   margin-right: auto;
 
-  color: #faf7f8;
+  color: var(--text);
 }
 
 .closing-content > p:not(.eyebrow) {
@@ -785,7 +793,7 @@ p {
 
   margin: 0 auto;
 
-  color: #c5bbc1;
+  color: var(--muted);
 
   font-size: 1.05rem;
 }
@@ -802,19 +810,19 @@ p {
 .closing-tags span {
   padding: 8px 14px;
 
-  border: 1px solid rgba(241, 201, 220, 0.25);
+  border: 1px solid rgba(130, 76, 108, 0.2);
 
   border-radius: 999px;
 
-  color: #f1c9dc;
+  color: var(--accent-dark);
 
   font-size: 0.82rem;
 }
 
 
 /* =========================
-   CONTACT
-   BLACK CONTINUES
+   CONTACT / EMAIL PAGE
+   THIS ONE IS BLACK
 ========================= */
 
 .contact-section {
@@ -1077,6 +1085,12 @@ p {
     min-height: 650px;
 
     padding: 110px 20px;
+
+    /*
+      Keep this section light,
+      NOT black.
+    */
+    background: #f0e5eb;
   }
 
   .closing-content {
@@ -1096,10 +1110,15 @@ p {
   }
 
 
-  /* Contact */
+  /* Contact / Email */
 
   .contact-section {
     padding: 110px 20px;
+
+    /*
+      ONLY THE EMAIL PAGE IS BLACK.
+    */
+    background: #000000;
   }
 
   .contact-inner {
