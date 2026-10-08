@@ -1,18 +1,12 @@
-/* =========================
-   BASE
-========================= */
-
 :root {
   --bg: #faf7f8;
   --card: #ffffff;
   --text: #29242a;
   --muted: #746d74;
   --line: #e5dce2;
-
   --accent: #a66a89;
   --accent-dark: #824c6c;
   --soft-magenta: #f2e5ec;
-
   --max-width: 1180px;
 }
 
@@ -28,10 +22,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-
   font-family: "DM Sans", sans-serif;
   line-height: 1.7;
-
   overflow-x: hidden;
 }
 
@@ -45,16 +37,10 @@ img {
   display: block;
 }
 
-
-/* =========================
-   TYPOGRAPHY
-========================= */
-
 h1,
 h2,
 h3 {
   margin-top: 0;
-
   font-family: "Playfair Display", serif;
   font-weight: 500;
   line-height: 1.15;
@@ -84,30 +70,25 @@ p {
 
 
 /* =========================
-   NAVIGATION
+   HEADER / NAVIGATION
 ========================= */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-
   background: rgba(250, 247, 248, 0.9);
   border-bottom: 1px solid rgba(229, 220, 226, 0.8);
-
   backdrop-filter: blur(12px);
 }
 
 .nav-container {
   max-width: var(--max-width);
   margin: auto;
-
   padding: 18px 32px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 30px;
 }
 
@@ -119,7 +100,6 @@ p {
 .nav-links {
   display: flex;
   align-items: center;
-
   gap: 22px;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -128,7 +108,6 @@ p {
 .nav-links a {
   color: var(--muted);
   font-size: 0.88rem;
-
   transition: color 0.25s ease;
 }
 
@@ -143,34 +122,25 @@ p {
 
 .hero {
   position: relative;
-
   min-height: 86vh;
-
   display: flex;
   align-items: center;
-
   overflow: hidden;
 }
 
 .hero-content {
   position: relative;
   z-index: 3;
-
   width: min(var(--max-width), calc(100% - 64px));
-
   margin: 0 auto;
-
   padding: 110px 0 130px;
 }
 
 .eyebrow {
   margin-bottom: 24px;
-
   color: var(--accent-dark);
-
   font-size: 0.82rem;
   font-weight: 600;
-
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
@@ -192,62 +162,68 @@ p {
 
 .hero-description {
   max-width: 610px;
-
   color: var(--muted);
   font-size: 1.08rem;
 }
 
 
-/* =========================
-   FLOWING RIBBON
-========================= */
+/* HERO HIGHLIGHTS */
+
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.hero-highlights span {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--accent-dark);
+  font-size: 0.8rem;
+}
+
+
+/* ONE RIBBON ONLY */
 
 .hero-ribbon {
   position: absolute;
   inset: 0;
-
   z-index: 1;
-
   pointer-events: none;
 }
 
 .hero-ribbon svg {
   width: 100%;
   height: 100%;
-
   overflow: visible;
+}
+
+/* Hide the second/background ribbon */
+.ribbon-path-back {
+  display: none;
 }
 
 .ribbon-path {
   fill: none;
-
+  stroke: var(--accent);
+  stroke-width: 3;
+  opacity: 0.55;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.ribbon-path-back {
-  stroke: var(--soft-magenta);
-  stroke-width: 34;
-
-  opacity: 0.65;
-}
-
 .ribbon-path-main {
-  stroke: var(--accent);
-  stroke-width: 2.2;
-
-  opacity: 0.5;
-
   stroke-dasharray: 1800;
   stroke-dashoffset: 1800;
-
   animation:
     ribbonDraw 8s ease-in-out infinite,
     ribbonFloat 8s ease-in-out infinite;
 }
 
 @keyframes ribbonDraw {
-
   0% {
     stroke-dashoffset: 1800;
   }
@@ -263,11 +239,9 @@ p {
   100% {
     stroke-dashoffset: -1800;
   }
-
 }
 
 @keyframes ribbonFloat {
-
   0%,
   100% {
     transform: translateY(0);
@@ -276,54 +250,37 @@ p {
   50% {
     transform: translateY(-8px);
   }
-
 }
 
 
 /* =========================
-   SECTIONS
+   GENERAL SECTIONS
 ========================= */
 
 .section {
   position: relative;
-
   max-width: var(--max-width);
-
   margin: 0 auto;
-
   padding: 130px 32px;
 }
 
 .section-soft {
   max-width: none;
-
-  padding-left: max(
-    32px,
-    calc((100vw - var(--max-width)) / 2 + 32px)
-  );
-
-  padding-right: max(
-    32px,
-    calc((100vw - var(--max-width)) / 2 + 32px)
-  );
-
+  padding-left: max(32px, calc((100vw - var(--max-width)) / 2 + 32px));
+  padding-right: max(32px, calc((100vw - var(--max-width)) / 2 + 32px));
   background: #f6eff3;
 }
 
 .section-number {
   margin-bottom: 55px;
-
   color: var(--accent-dark);
-
   font-size: 0.78rem;
   font-weight: 600;
-
   letter-spacing: 0.2em;
 }
 
 .section-intro {
   max-width: 760px;
-
   margin-bottom: 65px;
 }
 
@@ -343,11 +300,8 @@ p {
 
 .about-grid {
   display: grid;
-
   grid-template-columns: 1.1fr 0.9fr;
-
   gap: 90px;
-
   align-items: center;
 }
 
@@ -357,72 +311,49 @@ p {
 
 .about-text p {
   max-width: 700px;
-
   color: var(--muted);
 }
 
 .interest-list {
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 9px;
-
   margin-top: 30px;
 }
 
 .interest-list span {
   padding: 8px 13px;
-
   border: 1px solid var(--line);
   border-radius: 999px;
-
   background: var(--card);
-
   color: var(--muted);
-
   font-size: 0.83rem;
 }
-
-
-/* =========================
-   PHOTO PLACEHOLDERS
-========================= */
 
 .photo-placeholder,
 .certificate-placeholder {
   min-height: 280px;
-
   border: 1px solid var(--line);
-
   background: rgba(255, 255, 255, 0.6);
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
 
 .photo-placeholder span,
 .certificate-placeholder span {
   color: var(--accent-dark);
-
   font-size: 0.8rem;
   font-weight: 600;
-
   letter-spacing: 0.16em;
 }
 
 .photo-placeholder small,
 .certificate-placeholder small {
   margin-top: 8px;
-
   color: var(--muted);
-
   font-size: 0.82rem;
 }
 
@@ -437,9 +368,7 @@ p {
 
 .academic-grid {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 100px;
 }
 
@@ -453,20 +382,15 @@ p {
 
 .school-block p {
   margin-bottom: 7px;
-
   color: var(--muted);
 }
 
 .small-heading {
   margin-bottom: 20px;
-
   font-family: "DM Sans", sans-serif;
-
   font-size: 0.8rem;
   font-weight: 600;
-
   color: var(--accent-dark);
-
   letter-spacing: 0.17em;
   text-transform: uppercase;
 }
@@ -481,7 +405,6 @@ p {
 
 .skill-group p {
   margin-top: 5px;
-
   color: var(--muted);
 }
 
@@ -491,17 +414,13 @@ p {
 
 .credential-list {
   display: grid;
-
   gap: 20px;
 }
 
 .credential {
   padding-bottom: 20px;
-
   border-bottom: 1px solid var(--line);
-
   display: flex;
-
   flex-direction: column;
 }
 
@@ -511,7 +430,6 @@ p {
 
 .credential span {
   color: var(--muted);
-
   font-size: 0.85rem;
 }
 
@@ -521,46 +439,31 @@ p {
 
 .current-learning {
   padding: 24px;
-
   border: 1px solid var(--line);
-
   background: rgba(255, 255, 255, 0.55);
 }
 
 .current-learning strong {
   display: block;
-
   margin-bottom: 3px;
 }
 
 .current-learning span {
   color: var(--accent-dark);
-
   font-size: 0.85rem;
 }
 
 .current-learning p {
   margin: 12px 0 0;
-
   color: var(--muted);
-
   font-size: 0.9rem;
 }
 
-
-/* =========================
-   FEATURED CREDENTIAL
-========================= */
-
 .featured-credential {
   margin-top: 110px;
-
   display: grid;
-
   grid-template-columns: 0.8fr 1.2fr;
-
   gap: 70px;
-
   align-items: center;
 }
 
@@ -570,13 +473,11 @@ p {
 
 .featured-copy > p:not(.eyebrow) {
   margin-bottom: 5px;
-
   font-size: 1.05rem;
 }
 
 .certificate-placeholder {
   min-height: 430px;
-
   background: var(--card);
 }
 
@@ -587,23 +488,16 @@ p {
 
 .project-grid {
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
   gap: 25px;
 }
 
 .project-card {
   position: relative;
-
   min-height: 400px;
-
   padding: 42px;
-
   border: 1px solid var(--line);
-
   background: var(--card);
-
   transition:
     transform 0.3s ease,
     border-color 0.3s ease;
@@ -611,28 +505,21 @@ p {
 
 .project-card:hover {
   transform: translateY(-5px);
-
   border-color: #d3bdca;
 }
 
 .project-number {
   margin-bottom: 65px;
-
   color: var(--accent);
-
   font-family: "Playfair Display", serif;
-
   font-size: 2.3rem;
 }
 
 .card-category {
   margin-bottom: 12px;
-
   color: var(--accent-dark);
-
   font-size: 0.75rem;
   font-weight: 600;
-
   letter-spacing: 0.14em;
 }
 
@@ -646,9 +533,7 @@ p {
 
 .project-focus {
   margin-top: 30px;
-
   color: var(--accent-dark);
-
   font-size: 0.85rem;
 }
 
@@ -663,19 +548,14 @@ p {
 
 .timeline-item {
   display: grid;
-
   grid-template-columns: 120px 1fr;
-
   gap: 45px;
-
   padding: 45px 0;
-
   border-bottom: 1px solid var(--line);
 }
 
 .timeline-year {
   color: var(--accent-dark);
-
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -694,11 +574,8 @@ p {
 
 .image-row {
   margin-top: 60px;
-
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
   gap: 25px;
 }
 
@@ -709,29 +586,21 @@ p {
 
 .community-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 22px;
 }
 
 .community-card {
   padding: 35px;
-
   border-top: 2px solid var(--accent);
-
   background: var(--card);
 }
 
 .community-number {
   display: block;
-
   margin-bottom: 45px;
-
   color: var(--accent);
-
   font-family: "Playfair Display", serif;
-
   font-size: 2rem;
 }
 
@@ -749,18 +618,16 @@ p {
 
 
 /* =========================
-   CREATIVE WORK
+   CREATIVE
 ========================= */
 
 .creative-block {
   padding: 70px 0;
-
   border-top: 1px solid var(--line);
 }
 
 .creative-heading {
   max-width: 720px;
-
   margin-bottom: 35px;
 }
 
@@ -774,9 +641,7 @@ p {
 
 .creative-images {
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
   gap: 22px;
 }
 
@@ -794,7 +659,6 @@ p {
 
 .dance-photo {
   max-width: 520px;
-
   min-height: 300px;
 }
 
@@ -804,28 +668,21 @@ p {
 
 
 /* =========================
-   WHAT CONNECTS IT ALL
+   CLOSING SECTION
 ========================= */
 
 .closing-section {
   position: relative;
-
   overflow: hidden;
-
   padding: 170px 32px;
-
   background: #f0e5eb;
 }
 
 .closing-content {
   position: relative;
-
   z-index: 2;
-
   max-width: 760px;
-
   margin: auto;
-
   text-align: center;
 }
 
@@ -835,45 +692,31 @@ p {
 
 .closing-content > p:not(.eyebrow) {
   max-width: 650px;
-
   margin: 0 auto;
-
   color: var(--muted);
-
   font-size: 1.05rem;
 }
 
 .closing-tags {
   margin-top: 35px;
-
   display: flex;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 10px;
 }
 
 .closing-tags span {
   padding: 8px 14px;
-
   border: 1px solid rgba(130, 76, 108, 0.2);
-
   border-radius: 999px;
-
   color: var(--accent-dark);
-
   font-size: 0.82rem;
 }
 
 .closing-ribbon {
   position: absolute;
-
   inset: 0;
-
   pointer-events: none;
-
   opacity: 0.6;
 }
 
@@ -882,60 +725,30 @@ p {
   height: 100%;
 }
 
-.closing-ribbon path {
-  fill: none;
-
-  stroke: var(--accent);
-
-  stroke-width: 2;
-
-  stroke-linecap: round;
-
-  stroke-dasharray: 1500;
-
-  stroke-dashoffset: 1500;
-
-  animation: closingRibbon 9s ease-in-out infinite;
-}
-
-@keyframes closingRibbon {
-
-  0% {
-    stroke-dashoffset: 1500;
-  }
-
-  50% {
-    stroke-dashoffset: 0;
-  }
-
-  75% {
-    stroke-dashoffset: 0;
-  }
-
-  100% {
-    stroke-dashoffset: -1500;
-  }
-
-}
-
 
 /* =========================
-   CONTACT / FINAL NOTE
+   CONTACT
 ========================= */
 
+/*
+   IMPORTANT:
+   The contact section used to inherit
+   max-width: 1180px from .section.
+   This caused the white strips on both sides.
+*/
+
 .contact-section {
+  max-width: none;
+  width: 100%;
+  margin: 0;
   padding: 160px 32px 130px;
-
   background: var(--text);
-
   color: #faf7f8;
 }
 
 .contact-inner {
   max-width: 800px;
-
   margin: auto;
-
   text-align: center;
 }
 
@@ -945,33 +758,23 @@ p {
 
 .contact-inner h2 {
   margin-bottom: 30px;
-
   font-size: clamp(3rem, 6vw, 5.5rem);
 }
 
 .contact-inner > p:not(.eyebrow):not(.contact-location) {
   max-width: 650px;
-
   margin: 0 auto;
-
   color: #c5bbc1;
-
   font-size: 1.05rem;
 }
 
 .email-link {
   display: inline-block;
-
   margin-top: 45px;
-
   color: #f1c9dc;
-
   font-family: "Playfair Display", serif;
-
   font-size: clamp(1.7rem, 4vw, 3rem);
-
   border-bottom: 1px solid rgba(241, 201, 220, 0.35);
-
   transition:
     color 0.25s ease,
     border-color 0.25s ease;
@@ -979,15 +782,12 @@ p {
 
 .email-link:hover {
   color: #ffffff;
-
   border-color: #ffffff;
 }
 
 .contact-location {
   margin-top: 28px;
-
   color: #a99da5;
-
   font-size: 0.9rem;
 }
 
@@ -997,22 +797,23 @@ p {
 ========================= */
 
 .site-footer {
+  width: 100%;
   padding: 25px 32px;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
   background: #211d21;
-
   color: #8f858c;
-
   font-size: 0.78rem;
 }
 
-.site-footer p {
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-inner p {
   margin: 0;
 }
 
@@ -1025,7 +826,6 @@ p {
 
   .nav-container {
     align-items: flex-start;
-
     flex-direction: column;
   }
 
@@ -1037,7 +837,6 @@ p {
   .academic-grid,
   .featured-credential {
     grid-template-columns: 1fr;
-
     gap: 55px;
   }
 
@@ -1056,14 +855,12 @@ p {
 
   .hero-content {
     padding-top: 90px;
-
     padding-bottom: 100px;
   }
 
   .hero-ribbon {
     opacity: 0.7;
   }
-
 }
 
 
@@ -1087,13 +884,11 @@ p {
 
   .section-soft {
     padding-left: 20px;
-
     padding-right: 20px;
   }
 
   .hero-content {
     width: calc(100% - 40px);
-
     padding: 90px 0;
   }
 
@@ -1107,13 +902,11 @@ p {
 
   .project-card {
     min-height: auto;
-
     padding: 30px;
   }
 
   .timeline-item {
     grid-template-columns: 1fr;
-
     gap: 10px;
   }
 
@@ -1132,27 +925,26 @@ p {
   }
 
   .contact-section {
+    max-width: none;
+    width: 100%;
     padding: 110px 20px;
   }
 
   .email-link {
     font-size: 1.6rem;
-
     overflow-wrap: anywhere;
   }
 
   .site-footer {
-    flex-direction: column;
-
     padding: 25px 20px;
   }
 
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
-
-/* =========================
-   REDUCED MOTION
-========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1160,15 +952,12 @@ p {
     scroll-behavior: auto;
   }
 
-  .ribbon-path-main,
-  .closing-ribbon path {
+  .ribbon-path-main {
     animation: none;
-
     stroke-dashoffset: 0;
   }
 
   .project-card {
     transition: none;
   }
-
 }
